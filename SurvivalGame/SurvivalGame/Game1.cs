@@ -18,7 +18,8 @@ namespace SurvivalGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        String gameState;
+        public enum GameState {Play, Options, Menu};
+        public static GameState gameState;
         MenuComponent menu;
 
         public static Rectangle screen;
@@ -37,11 +38,11 @@ namespace SurvivalGame
         /// </summary>
         protected override void Initialize()
         {
+            gameState = GameState.Menu;
             screen = new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
             menu = new MenuComponent();
 
             // Initialize the game with gameState Menu
-            gameState = "Menu";
             base.Initialize();
         }
 
@@ -76,19 +77,26 @@ namespace SurvivalGame
         {
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
+                Quit();
 
             // Switchcase for changed gamestatus
             switch (gameState)
             {
-                case "Menu":
+                case GameState.Menu:
                     menu.Update(gameTime);
                 break;
-                case "Game":
+                case GameState.Play:
+                break;
+                case GameState.Options:
                 break;
             }
 
             base.Update(gameTime);
+        }
+
+        public void Quit()
+        {
+            this.Exit();
         }
 
         /// <summary>
@@ -97,19 +105,24 @@ namespace SurvivalGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
-
             // Switchcase for changed gamestatus
             switch (gameState)
             {
-                case "Menu":
+                case GameState.Menu:
                     menu.Draw(spriteBatch);
                     break;
-                case "Game":
+                case GameState.Play:
+                    break;
+                case GameState.Options:
                     break;
             }
 
             base.Draw(gameTime);
+        }
+
+        public void SetBackground(Color color)
+        {
+            GraphicsDevice.Clear(color);
         }
     }
 }

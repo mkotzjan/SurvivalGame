@@ -29,7 +29,7 @@ namespace SurvivalGame
 
         List<string> buttonList = new List<string>();
 
-        int selected = 0;
+        Game1.GameState selected = Game1.GameState.Play;
 
         public MenuComponent()
         {
@@ -64,7 +64,17 @@ namespace SurvivalGame
             }
             else if (CheckKeyboard(Keys.Down))
             {
-                if (selected < buttonList.Count - 1) selected++;
+                if ((int)selected < buttonList.Count - 1) selected++;
+            }
+
+            if (CheckKeyboard(Keys.Enter))
+            {
+                if ((int)selected == 2)
+                {
+                    Program.game.Quit();
+                }
+                else Game1.gameState = selected;
+                
             }
 
             prevKeyboard = keyboard;
@@ -87,21 +97,22 @@ namespace SurvivalGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
+            Program.game.SetBackground(new Color(30, 30, 30));
             float x = 0;
             spriteBatch.Begin();
             for (int i = 0; i < buttonList.Count; i++)
             {
-                color = (i == selected) ? Color.Yellow : Color.White;
-                if (i == selected)
+                color = (i == (int)selected) ? new Color(180, 180, 100) : new Color(58, 58, 58);
+                if (i == (int)selected)
                 {
-                    x += (float)10;
+                    x += 10;
                 }
                 else
                 {
                     x = 0;
                 }
                 spriteBatch.DrawString(spriteFont, buttonList[i], new Vector2((Game1.screen.Width / 2) - 
-                    (spriteFont.MeasureString(buttonList[i]).X / 2) + x, ((Game1.screen.Height / 2) -
+                     + x, ((Game1.screen.Height / 2) -
                     (spriteFont.LineSpacing * buttonList.Count) / 2) +
                     (spriteFont.LineSpacing + linePadding * i)), color);
             }
