@@ -15,7 +15,7 @@ namespace SurvivalGame
     class MenuComponent
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        SoundEffect soundEffect;
 
         KeyboardState keyboard;
         KeyboardState prevKeyboard;
@@ -46,6 +46,7 @@ namespace SurvivalGame
         {
             // spriteBatch = new SpriteBatch(GraphicsDevice);
             spriteFont = content.Load<SpriteFont>("Menu");
+            soundEffect = content.Load<SoundEffect>(@"Sound\button-10");
         }
 
         /// <summary>
@@ -60,11 +61,19 @@ namespace SurvivalGame
 
             if (CheckKeyboard(Keys.Up))
             {
-                if (selected > 0) selected--;
+                if (selected > 0)
+                {
+                    selected--;
+                    soundEffect.Play();
+                }
             }
             else if (CheckKeyboard(Keys.Down))
             {
-                if ((int)selected < buttonList.Count - 1) selected++;
+                if ((int)selected < buttonList.Count - 1)
+                {
+                    selected++;
+                    soundEffect.Play();
+                }
             }
 
             if (CheckKeyboard(Keys.Enter))
