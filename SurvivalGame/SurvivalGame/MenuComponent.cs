@@ -87,12 +87,21 @@ namespace SurvivalGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
+            float x = 0;
             spriteBatch.Begin();
             for (int i = 0; i < buttonList.Count; i++)
             {
                 color = (i == selected) ? Color.Yellow : Color.White;
+                if (i == selected)
+                {
+                    x += (float)10;
+                }
+                else
+                {
+                    x = 0;
+                }
                 spriteBatch.DrawString(spriteFont, buttonList[i], new Vector2((Game1.screen.Width / 2) - 
-                    (spriteFont.MeasureString(buttonList[i]).X / 2), ((Game1.screen.Height / 2) -
+                    (spriteFont.MeasureString(buttonList[i]).X / 2) + x, ((Game1.screen.Height / 2) -
                     (spriteFont.LineSpacing * buttonList.Count) / 2) +
                     (spriteFont.LineSpacing + linePadding * i)), color);
             }
