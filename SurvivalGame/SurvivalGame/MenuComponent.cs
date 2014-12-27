@@ -94,7 +94,6 @@ namespace SurvivalGame
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
             Program.game.SetBackground(new Color(30, 30, 30));

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -15,6 +16,12 @@ namespace SurvivalGame
         {
             mapReader = new MapReader();
         }
+
+        public void LoadContent(ContentManager content)
+        {
+            mapReader.LoadContent(content);
+        }
+
         public void Update(GameTime gameTime)
         {
             KeyboardState ks = Keyboard.GetState();

@@ -13,6 +13,7 @@ namespace SurvivalGame
         public MapMaker myMap = new MapMaker();
         public int squaresAcross = 5;
         public int squaresDown = 5;
+        SpriteBatch spriteBatch;
 
         public void LoadContent(ContentManager content)
         {

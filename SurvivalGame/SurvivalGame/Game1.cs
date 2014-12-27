@@ -58,6 +58,7 @@ namespace SurvivalGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             menu.LoadContent(Content);
+            play.LoadContent(Content);
             base.LoadContent();
 
             // TODO: use this.Content to load your game content here
