@@ -21,6 +21,7 @@ namespace SurvivalGame
         public enum GameState {Play, Options, Menu};
         public static GameState gameState;
         MenuComponent menu;
+        Play play;
 
         public static Rectangle screen;
 
@@ -41,6 +42,7 @@ namespace SurvivalGame
             gameState = GameState.Menu;
             screen = new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
             menu = new MenuComponent();
+            play = new Play();
 
             // Initialize the game with gameState Menu
             base.Initialize();
@@ -56,6 +58,8 @@ namespace SurvivalGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             menu.LoadContent(Content);
+            base.LoadContent();
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -86,6 +90,7 @@ namespace SurvivalGame
                     menu.Update(gameTime);
                 break;
                 case GameState.Play:
+                play.Update(gameTime);
                 break;
                 case GameState.Options:
                 break;
@@ -112,6 +117,7 @@ namespace SurvivalGame
                     menu.Draw(spriteBatch);
                     break;
                 case GameState.Play:
+                    play.Draw(spriteBatch);
                     break;
                 case GameState.Options:
                     break;

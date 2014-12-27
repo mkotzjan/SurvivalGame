@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SurvivalGame
 {
-    class MapCell
+    public class MapCell
     {
         public int TileID { get; set; }
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SurvivalGame
 {
-    class MapMaker
+    public class MapMaker
     {
         public List<MapRow> Rows = new List<MapRow>();
         public int MapWidth = 50;
@@ -49,25 +49,25 @@ namespace SurvivalGame
             Rows[3].Colums[6].TileID = 2;
             Rows[3].Colums[7].TileID = 2;
 
-            Rows[4].Columns[2].TileID = 3;
-            Rows[4].Columns[3].TileID = 1;
-            Rows[4].Columns[4].TileID = 1;
-            Rows[4].Columns[5].TileID = 2;
-            Rows[4].Columns[6].TileID = 2;
-            Rows[4].Columns[7].TileID = 2;
+            Rows[4].Colums[2].TileID = 3;
+            Rows[4].Colums[3].TileID = 1;
+            Rows[4].Colums[4].TileID = 1;
+            Rows[4].Colums[5].TileID = 2;
+            Rows[4].Colums[6].TileID = 2;
+            Rows[4].Colums[7].TileID = 2;
 
-            Rows[5].Columns[2].TileID = 3;
-            Rows[5].Columns[3].TileID = 1;
-            Rows[5].Columns[4].TileID = 1;
-            Rows[5].Columns[5].TileID = 2;
-            Rows[5].Columns[6].TileID = 2;
-            Rows[5].Columns[7].TileID = 2;
+            Rows[5].Colums[2].TileID = 3;
+            Rows[5].Colums[3].TileID = 1;
+            Rows[5].Colums[4].TileID = 1;
+            Rows[5].Colums[5].TileID = 2;
+            Rows[5].Colums[6].TileID = 2;
+            Rows[5].Colums[7].TileID = 2;
 
             // End Create Sample Map Data
         }
     }
 
-    class MapRow
+    public class MapRow
     {
         public List<MapCell> Colums = new List<MapCell>();
     }
