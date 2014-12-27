@@ -7,5 +7,11 @@ namespace SurvivalGame
 {
     class MapCell
     {
+        public int TileID { get; set; }
+
+        public MapCell(int tileID)
+        {
+            TileID = tileID;
+        }
     }
 }

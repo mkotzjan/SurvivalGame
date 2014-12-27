@@ -7,5 +7,6 @@ namespace SurvivalGame
 {
     class MapReader
     {
+        
     }
 }
