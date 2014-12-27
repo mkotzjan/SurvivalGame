@@ -11,8 +11,8 @@ namespace SurvivalGame
     public class MapReader
     {
         public MapMaker myMap = new MapMaker();
-        public int squaresAcross = 5;
-        public int squaresDown = 5;
+        public int squaresAcross = 26;
+        public int squaresDown = 16;
         SpriteBatch spriteBatch;
 
         public void LoadContent(ContentManager content)
