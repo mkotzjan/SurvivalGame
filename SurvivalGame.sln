@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurvivalGame", "SurvivalGame\SurvivalGame\SurvivalGame.csproj", "{EF122441-DB57-4416-85EE-D5A699CA2082}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "SurvivalGameContent", "SurvivalGame\SurvivalGameContent\SurvivalGameContent.contentproj", "{C95B15FF-0960-4907-ACA3-58336F1E67B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF122441-DB57-4416-85EE-D5A699CA2082}.Debug|x86.ActiveCfg = Debug|x86
+		{EF122441-DB57-4416-85EE-D5A699CA2082}.Debug|x86.Build.0 = Debug|x86
+		{EF122441-DB57-4416-85EE-D5A699CA2082}.Release|x86.ActiveCfg = Release|x86
+		{EF122441-DB57-4416-85EE-D5A699CA2082}.Release|x86.Build.0 = Release|x86
+		{C95B15FF-0960-4907-ACA3-58336F1E67B7}.Debug|x86.ActiveCfg = Debug|x86
+		{C95B15FF-0960-4907-ACA3-58336F1E67B7}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
