@@ -18,6 +18,10 @@ namespace SurvivalGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        String gameState;
+        MenuComponent menu;
+
+        public static Rectangle screen;
 
         public Game1()
         {
@@ -33,8 +37,11 @@ namespace SurvivalGame
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            screen = new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            menu = new MenuComponent();
 
+            // Initialize the game with gameState Menu
+            gameState = "Menu";
             base.Initialize();
         }
 
@@ -47,6 +54,7 @@ namespace SurvivalGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            menu.LoadContent(Content);
             // TODO: use this.Content to load your game content here
         }
 
@@ -70,7 +78,15 @@ namespace SurvivalGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            // Switchcase for changed gamestatus
+            switch (gameState)
+            {
+                case "Menu":
+                    menu.Update(gameTime);
+                break;
+                case "Game":
+                break;
+            }
 
             base.Update(gameTime);
         }
@@ -81,9 +97,17 @@ namespace SurvivalGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
+            // Switchcase for changed gamestatus
+            switch (gameState)
+            {
+                case "Menu":
+                    menu.Draw(spriteBatch);
+                    break;
+                case "Game":
+                    break;
+            }
 
             base.Draw(gameTime);
         }
