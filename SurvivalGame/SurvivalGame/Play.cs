@@ -27,22 +27,22 @@ namespace SurvivalGame
             KeyboardState ks = Keyboard.GetState();
             if (ks.IsKeyDown(Keys.Left))
             {
-                Camera.Location.X = MathHelper.Clamp(Camera.Location.X - 2, 0, (mapReader.myMap.MapWidth - mapReader.squaresAcross) * 32);
+                Camera.Location.X = MathHelper.Clamp(Camera.Location.X - 2, 0, (mapReader.myMap.MapWidth - mapReader.squaresAcross) * Tile.TileWidth);
             }
 
             if (ks.IsKeyDown(Keys.Right))
             {
-                Camera.Location.X = MathHelper.Clamp(Camera.Location.X + 2, 0, (mapReader.myMap.MapWidth - mapReader.squaresAcross) * 32);
+                Camera.Location.X = MathHelper.Clamp(Camera.Location.X + 2, 0, (mapReader.myMap.MapWidth - mapReader.squaresAcross) * Tile.TileWidth);
             }
 
             if (ks.IsKeyDown(Keys.Up))
             {
-                Camera.Location.Y = MathHelper.Clamp(Camera.Location.Y - 2, 0, (mapReader.myMap.MapHeight - mapReader.squaresDown) * 32);
+                Camera.Location.Y = MathHelper.Clamp(Camera.Location.Y - 2, 0, (mapReader.myMap.MapHeight - mapReader.squaresDown) * Tile.TileHeight);
             }
 
             if (ks.IsKeyDown(Keys.Down))
             {
-                Camera.Location.Y = MathHelper.Clamp(Camera.Location.Y + 2, 0, (mapReader.myMap.MapHeight - mapReader.squaresDown) * 32);
+                Camera.Location.Y = MathHelper.Clamp(Camera.Location.Y + 2, 0, (mapReader.myMap.MapHeight - mapReader.squaresDown) * Tile.TileHeight);
             }
         }
 
