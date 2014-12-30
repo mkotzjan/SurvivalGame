@@ -13,8 +13,10 @@ namespace SurvivalGame
         public MapMaker myMap = new MapMaker();
         public int squaresAcross = 17;
         public int squaresDown = 37;
-        public int baseOffsetX = -14;
-        public int baseOffsetY = -14;
+        int baseOffsetX = -32;
+        int baseOffsetY = -64;
+        float heightRowDepthMod = 0.0000001f;
+
 
         public void LoadContent(ContentManager content)
         {
@@ -24,7 +26,7 @@ namespace SurvivalGame
         public void Draw(SpriteBatch spriteBatch)
         {
             Program.game.SetBackground(Color.Black);
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
 
             Vector2 firstSquare = new Vector2(Camera.Location.X / Tile.TileStepX, Camera.Location.Y / Tile.TileStepY);
             int firstX = (int)firstSquare.X;
@@ -34,6 +36,9 @@ namespace SurvivalGame
             int offsetX = (int)squareOffset.X;
             int offsetY = (int)squareOffset.Y;
 
+            float maxdepth = ((myMap.MapWidth + 1) + ((myMap.MapHeight + 1) * Tile.TileWidth)) * 10;
+            float depthOffset;
+
             for (int y = 0; y < squaresDown; y++)
             {
                 int rowOffset = 0;
@@ -42,16 +47,42 @@ namespace SurvivalGame
 
                 for (int x = 0; x < squaresAcross; x++)
                 {
-                    foreach (int tileID in myMap.Rows[y + firstY].Colums[x + firstX].BaseTiles)
+                    int mapx = (firstX + x);
+                    int mapy = (firstY + y);
+                    depthOffset = 0.7f - ((mapx + (mapy * Tile.TileWidth)) / maxdepth);
+                    foreach (int tileID in myMap.Rows[mapy].Colums[mapx].BaseTiles)
                     {
                         spriteBatch.Draw(
+
                             Tile.TileSetTexture,
                             new Rectangle(
                                 (x * Tile.TileStepX) - offsetX + rowOffset + baseOffsetX,
                                 (y * Tile.TileStepY) - offsetY + baseOffsetY,
                                 Tile.TileWidth, Tile.TileHeight),
                             Tile.GetSourceRectangle(tileID),
-                            Color.White);
+                            Color.White,
+                            0.0f,
+                            Vector2.Zero,
+                            SpriteEffects.None,
+                            1.0f);
+                    }
+                    int heightRow = 0;
+
+                    foreach (int tileID in myMap.Rows[mapy].Colums[mapx].HeightTiles)
+                    {
+                        spriteBatch.Draw(
+                            Tile.TileSetTexture,
+                            new Rectangle(
+                                (x * Tile.TileStepX) - offsetX + rowOffset + baseOffsetX,
+                                (y * Tile.TileStepY) - offsetY + baseOffsetY - (heightRow * Tile.HeightTileOffset),
+                                Tile.TileWidth, Tile.TileHeight),
+                            Tile.GetSourceRectangle(tileID),
+                            Color.White,
+                            0.0f,
+                            Vector2.Zero,
+                            SpriteEffects.None,
+                            depthOffset - ((float)heightRow * heightRowDepthMod));
+                        heightRow++;
                     }
                 }
             }

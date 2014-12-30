@@ -62,19 +62,26 @@ namespace SurvivalGame
             Rows[5].Colums[5].TileID = 2;
             Rows[5].Colums[6].TileID = 2;
             Rows[5].Colums[7].TileID = 2;
-            //Rows[3].Columns[5].AddBaseTile(30);
-            //Rows[4].Columns[5].AddBaseTile(27);
-            //Rows[5].Columns[5].AddBaseTile(28);
+            Rows[16].Colums[4].AddHeightTile(54);
 
-            //Rows[3].Columns[6].AddBaseTile(25);
-            //Rows[5].Columns[6].AddBaseTile(24);
+            Rows[17].Colums[3].AddHeightTile(54);
 
-            //Rows[3].Columns[7].AddBaseTile(31);
-            //Rows[4].Columns[7].AddBaseTile(26);
-            //Rows[5].Columns[7].AddBaseTile(29);
+            Rows[15].Colums[3].AddHeightTile(54);
+            Rows[16].Colums[3].AddHeightTile(53);
 
-            //Rows[4].Columns[6].AddBaseTile(104);
-            // End Create Sample Map Data
+            Rows[15].Colums[4].AddHeightTile(54);
+            Rows[15].Colums[4].AddHeightTile(54);
+            Rows[15].Colums[4].AddHeightTile(51);
+
+            Rows[18].Colums[3].AddHeightTile(51);
+            Rows[19].Colums[3].AddHeightTile(50);
+            Rows[18].Colums[4].AddHeightTile(55);
+
+            Rows[14].Colums[4].AddHeightTile(54);
+
+            Rows[14].Colums[5].AddHeightTile(62);
+            Rows[14].Colums[5].AddHeightTile(61);
+            Rows[14].Colums[5].AddHeightTile(63);
 
             // End Create Sample Map Data
         }
