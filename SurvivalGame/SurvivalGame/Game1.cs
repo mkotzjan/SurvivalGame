@@ -16,7 +16,7 @@ namespace SurvivalGame
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
+        public GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public enum GameState {Play, Options, Menu};
         public static GameState gameState;
@@ -39,6 +39,7 @@ namespace SurvivalGame
         /// </summary>
         protected override void Initialize()
         {
+            this.IsMouseVisible = true;
             gameState = GameState.Menu;
             screen = new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
             menu = new MenuComponent();

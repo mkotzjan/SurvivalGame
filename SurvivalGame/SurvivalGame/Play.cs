@@ -11,15 +11,19 @@ namespace SurvivalGame
 {
     class Play
     {
-        MapReader mapReader;
+        MapReader mapReader = new MapReader();
         public Play()
         {
-            mapReader = new MapReader();
         }
 
         public void LoadContent(ContentManager content)
         {
             mapReader.LoadContent(content);
+            Camera.ViewWidth = Program.game.graphics.PreferredBackBufferWidth;
+            Camera.ViewHeight = Program.game.graphics.PreferredBackBufferHeight;
+            Camera.WorldWidth = ((mapReader.myMap.MapWidth - 2) * Tile.TileStepX);
+            Camera.WorldHeight = ((mapReader.myMap.MapHeight - 2) * Tile.TileStepY);
+            Camera.DisplayOffset = new Vector2(mapReader.baseOffsetX, mapReader.baseOffsetY);
         }
 
         public void Update(GameTime gameTime)
@@ -27,26 +31,22 @@ namespace SurvivalGame
             KeyboardState ks = Keyboard.GetState();
             if (ks.IsKeyDown(Keys.Left))
             {
-                Camera.Location.X = MathHelper.Clamp(Camera.Location.X - 2, 0,
-                    (mapReader.myMap.MapWidth - mapReader.squaresAcross) * Tile.TileStepX);
+                Camera.Move(new Vector2(-2, 0));
             }
 
             if (ks.IsKeyDown(Keys.Right))
             {
-                Camera.Location.X = MathHelper.Clamp(Camera.Location.X + 2, 0,
-                    (mapReader.myMap.MapWidth - mapReader.squaresAcross) * Tile.TileStepX);
+                Camera.Move(new Vector2(2, 0));
             }
 
             if (ks.IsKeyDown(Keys.Up))
             {
-                Camera.Location.Y = MathHelper.Clamp(Camera.Location.Y - 2, 0,
-                    (mapReader.myMap.MapHeight - mapReader.squaresDown) * Tile.TileStepY);
+                Camera.Move(new Vector2(0, -2));
             }
 
             if (ks.IsKeyDown(Keys.Down))
             {
-                Camera.Location.Y = MathHelper.Clamp(Camera.Location.Y + 2, 0,
-                    (mapReader.myMap.MapHeight - mapReader.squaresDown) * Tile.TileStepY);
+                Camera.Move(new Vector2(0, 2));
             }
         }
 

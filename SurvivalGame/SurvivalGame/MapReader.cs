@@ -5,25 +5,29 @@ using System.Text;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace SurvivalGame
 {
     public class MapReader
     {
-        public MapMaker myMap = new MapMaker();
+        public MapMaker myMap;
         public int squaresAcross = 17;
         public int squaresDown = 37;
-        int baseOffsetX = -32;
-        int baseOffsetY = -64;
+        public int baseOffsetX = -32;
+        public int baseOffsetY = -64;
         float heightRowDepthMod = 0.0000001f;
+        Texture2D hilight;
 
         SpriteFont pericles6;
-        private bool DebugOverlay = true;
+        private bool DebugOverlay = false;
 
         public void LoadContent(ContentManager content)
         {
             Tile.TileSetTexture = content.Load<Texture2D>(@"Textures\TileSets\part4_tileset");
             pericles6 = content.Load<SpriteFont>(@"Fonts\Pericles6");
+            hilight = content.Load<Texture2D>(@"Textures\TileSets\hilight");
+            myMap = new MapMaker(content.Load<Texture2D>(@"Textures\TileSets\mousemap"));
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -53,19 +57,21 @@ namespace SurvivalGame
                     int mapx = (firstX + x);
                     int mapy = (firstY + y);
                     depthOffset = 0.7f - ((mapx + (mapy * Tile.TileWidth)) / maxdepth);
+                    if ((mapx >= myMap.MapWidth) || (mapy >= myMap.MapHeight))
+                        continue;
                     foreach (int tileID in myMap.Rows[mapy].Colums[mapx].BaseTiles)
                     {
                         spriteBatch.Draw(
 
                             Tile.TileSetTexture,
-                            new Rectangle(
-                                (x * Tile.TileStepX) - offsetX + rowOffset + baseOffsetX,
-                                (y * Tile.TileStepY) - offsetY + baseOffsetY,
-                                Tile.TileWidth, Tile.TileHeight),
+                            Camera.WorldToScreen(
+
+                                new Vector2((mapx * Tile.TileStepX) + rowOffset, mapy * Tile.TileStepY)),
                             Tile.GetSourceRectangle(tileID),
                             Color.White,
                             0.0f,
                             Vector2.Zero,
+                            1.0f,
                             SpriteEffects.None,
                             1.0f);
                     }
@@ -75,14 +81,15 @@ namespace SurvivalGame
                     {
                         spriteBatch.Draw(
                             Tile.TileSetTexture,
-                            new Rectangle(
-                                (x * Tile.TileStepX) - offsetX + rowOffset + baseOffsetX,
-                                (y * Tile.TileStepY) - offsetY + baseOffsetY - (heightRow * Tile.HeightTileOffset),
-                                Tile.TileWidth, Tile.TileHeight),
+                            Camera.WorldToScreen(
+                                new Vector2(
+                                    (mapx * Tile.TileStepX) + rowOffset,
+                                    mapy * Tile.TileStepY - (heightRow * Tile.HeightTileOffset))),
                             Tile.GetSourceRectangle(tileID),
                             Color.White,
                             0.0f,
                             Vector2.Zero,
+                            1.0f,
                             SpriteEffects.None,
                             depthOffset - ((float)heightRow * heightRowDepthMod));
                         heightRow++;
@@ -92,14 +99,14 @@ namespace SurvivalGame
                     {
                         spriteBatch.Draw(
                             Tile.TileSetTexture,
-                            new Rectangle(
-                                (x * Tile.TileStepX) - offsetX + rowOffset + baseOffsetX,
-                                (y * Tile.TileStepY) - offsetY + baseOffsetY - (heightRow * Tile.HeightTileOffset),
-                                Tile.TileWidth, Tile.TileHeight),
+                            Camera.WorldToScreen(
+
+                                new Vector2((mapx * Tile.TileStepX) + rowOffset, mapy * Tile.TileStepY)),
                             Tile.GetSourceRectangle(tileID),
                             Color.White,
                             0.0f,
                             Vector2.Zero,
+                            1.0f,
                             SpriteEffects.None,
                             depthOffset - ((float)heightRow * heightRowDepthMod));
                     }
@@ -114,6 +121,29 @@ namespace SurvivalGame
                 }
             }
 
+            Vector2 hilightLoc = Camera.ScreenToWorld(new Vector2(Mouse.GetState().X, Mouse.GetState().Y));
+            Point hilightPoint = myMap.WorldToMapCell(new Point((int)hilightLoc.X, (int)hilightLoc.Y));
+
+            int hilightrowOffset = 0;
+            if ((hilightPoint.Y) % 2 == 1)
+                hilightrowOffset = Tile.OddRowXOffset;
+
+            spriteBatch.Draw(
+                            hilight,
+                            Camera.WorldToScreen(
+
+                                new Vector2(
+
+                                    (hilightPoint.X * Tile.TileStepX) + hilightrowOffset,
+
+                                    (hilightPoint.Y + 2) * Tile.TileStepY)),
+                            new Rectangle(0, 0, 64, 32),
+                            Color.White * 0.3f,
+                            0.0f,
+                            Vector2.Zero,
+                            1.0f,
+                            SpriteEffects.None,
+                            0.0f);
             spriteBatch.End();
         }
     }

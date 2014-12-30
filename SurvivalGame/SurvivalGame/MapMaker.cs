@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SurvivalGame
 {
     public class MapMaker
     {
+        private Texture2D mouseMap;
         public List<MapRow> Rows = new List<MapRow>();
         public int MapWidth = 50;
         public int MapHeight = 50;
 
-        public MapMaker()
+        public MapMaker(Texture2D mouseMap)
         {
+            this.mouseMap = mouseMap;
             for (int y = 0; y < MapHeight; y++)
             {
                 MapRow thisRow = new MapRow();
@@ -92,6 +96,70 @@ namespace SurvivalGame
 
 
             // End Create Sample Map Data
+        }
+
+        public Point WorldToMapCell(Point worldPoint, out Point localPoint)
+        {
+            Point mapCell = new Point(
+               (int)(worldPoint.X / mouseMap.Width),
+               ((int)(worldPoint.Y / mouseMap.Height)) * 2
+               );
+
+            int localPointX = worldPoint.X % mouseMap.Width;
+            int localPointY = worldPoint.Y % mouseMap.Height;
+
+            int dx = 0;
+            int dy = 0;
+
+            uint[] myUint = new uint[1];
+
+            if (new Rectangle(0, 0, mouseMap.Width, mouseMap.Height).Contains(localPointX, localPointY))
+            {
+                mouseMap.GetData(0, new Rectangle(localPointX, localPointY, 1, 1), myUint, 0, 1);
+
+                if (myUint[0] == 0xFF0000FF) // Red
+                {
+                    dx = -1;
+                    dy = -1;
+                    localPointX = localPointX + (mouseMap.Width / 2);
+                    localPointY = localPointY + (mouseMap.Height / 2);
+                }
+
+                if (myUint[0] == 0xFF00FF00) // Green
+                {
+                    dx = -1;
+                    localPointX = localPointX + (mouseMap.Width / 2);
+                    dy = 1;
+                    localPointY = localPointY - (mouseMap.Height / 2);
+                }
+
+                if (myUint[0] == 0xFF00FFFF) // Yellow
+                {
+                    dy = -1;
+                    localPointX = localPointX - (mouseMap.Width / 2);
+                    localPointY = localPointY + (mouseMap.Height / 2);
+                }
+
+                if (myUint[0] == 0xFFFF0000) // Blue
+                {
+                    dy = +1;
+                    localPointX = localPointX - (mouseMap.Width / 2);
+                    localPointY = localPointY - (mouseMap.Height / 2);
+                }
+            }
+
+            mapCell.X += dx;
+            mapCell.Y += dy - 2;
+
+            localPoint = new Point(localPointX, localPointY);
+
+            return mapCell;
+        }
+
+        public Point WorldToMapCell(Point worldPoint)
+        {
+            Point dummy;
+            return WorldToMapCell(worldPoint, out dummy);
         }
     }
 
