@@ -45,7 +45,7 @@ namespace SurvivalGame
         public void LoadContent(ContentManager content)
         {
             // spriteBatch = new SpriteBatch(GraphicsDevice);
-            spriteFont = content.Load<SpriteFont>("Menu");
+            spriteFont = content.Load<SpriteFont>(@"Fonts\Menu");
             soundEffect = content.Load<SoundEffect>(@"Sound\button-10");
         }
 

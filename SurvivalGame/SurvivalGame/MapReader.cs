@@ -17,10 +17,13 @@ namespace SurvivalGame
         int baseOffsetY = -64;
         float heightRowDepthMod = 0.0000001f;
 
+        SpriteFont pericles6;
+        private bool DebugOverlay = true;
 
         public void LoadContent(ContentManager content)
         {
             Tile.TileSetTexture = content.Load<Texture2D>(@"Textures\TileSets\part4_tileset");
+            pericles6 = content.Load<SpriteFont>(@"Fonts\Pericles6");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -99,6 +102,14 @@ namespace SurvivalGame
                             Vector2.Zero,
                             SpriteEffects.None,
                             depthOffset - ((float)heightRow * heightRowDepthMod));
+                    }
+
+                    if (DebugOverlay)
+                    {
+                        spriteBatch.DrawString(pericles6, (x + firstX).ToString() + ", " + (y + firstY).ToString(),
+                            new Vector2((x * Tile.TileStepX) - offsetX + rowOffset + baseOffsetX + 24,
+                                (y * Tile.TileStepY) - offsetY + baseOffsetY + 48), Color.White, 0f, Vector2.Zero,
+                                1.0f, SpriteEffects.None, 0.0f);
                     }
                 }
             }
