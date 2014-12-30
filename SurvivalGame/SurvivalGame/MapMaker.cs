@@ -83,6 +83,14 @@ namespace SurvivalGame
             Rows[14].Colums[5].AddHeightTile(61);
             Rows[14].Colums[5].AddHeightTile(63);
 
+            Rows[17].Colums[4].AddTopperTile(114);
+            Rows[16].Colums[5].AddTopperTile(115);
+            Rows[14].Colums[4].AddTopperTile(125);
+            Rows[15].Colums[5].AddTopperTile(91);
+            Rows[16].Colums[6].AddTopperTile(94);
+
+
+
             // End Create Sample Map Data
         }
     }

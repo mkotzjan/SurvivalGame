@@ -84,6 +84,22 @@ namespace SurvivalGame
                             depthOffset - ((float)heightRow * heightRowDepthMod));
                         heightRow++;
                     }
+
+                    foreach (int tileID in myMap.Rows[y + firstY].Colums[x + firstX].TopperTiles)
+                    {
+                        spriteBatch.Draw(
+                            Tile.TileSetTexture,
+                            new Rectangle(
+                                (x * Tile.TileStepX) - offsetX + rowOffset + baseOffsetX,
+                                (y * Tile.TileStepY) - offsetY + baseOffsetY - (heightRow * Tile.HeightTileOffset),
+                                Tile.TileWidth, Tile.TileHeight),
+                            Tile.GetSourceRectangle(tileID),
+                            Color.White,
+                            0.0f,
+                            Vector2.Zero,
+                            SpriteEffects.None,
+                            depthOffset - ((float)heightRow * heightRowDepthMod));
+                    }
                 }
             }
 
