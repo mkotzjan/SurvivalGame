@@ -1,0 +1,16 @@
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\SurvivalGame.exe
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\SurvivalGame.pdb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x86\Debug\SurvivalGame.exe
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x86\Debug\SurvivalGame.pdb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\TileSets\part1_tileset.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Sound\button-10.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Sound\button-4.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x86\Debug\SurvivalGame.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\TileSets\part2_tileset.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\TileSets\part3_tileset.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\TileSets\part4_tileset.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Fonts\Menu.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Fonts\Pericles6.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\TileSets\hilight.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\TileSets\mousemap.xnb

@@ -1,0 +1,16 @@
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Fonts\Menu.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Fonts\Pericles6.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\TileSets\part1_tileset.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\TileSets\part2_tileset.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\TileSets\part3_tileset.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\TileSets\part4_tileset.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\TileSets\hilight.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\TileSets\mousemap.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Sound\button-10.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Sound\button-4.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\SurvivalGame.exe
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\SurvivalGame.pdb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x86\Release\SurvivalGame.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x86\Release\SurvivalGame.exe
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x86\Release\SurvivalGame.pdb
