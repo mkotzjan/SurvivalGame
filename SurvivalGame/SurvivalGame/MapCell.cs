@@ -26,8 +26,6 @@ namespace SurvivalGame
             BaseTiles.Add(tileID);
         }
 
-
-
         public MapCell(int tileID)
         {
             TileID = tileID;
