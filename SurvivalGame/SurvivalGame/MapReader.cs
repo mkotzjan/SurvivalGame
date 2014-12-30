@@ -18,7 +18,7 @@ namespace SurvivalGame
 
         public void LoadContent(ContentManager content)
         {
-            Tile.TileSetTexture = content.Load<Texture2D>(@"Textures\TileSets\part3_tileset");
+            Tile.TileSetTexture = content.Load<Texture2D>(@"Textures\TileSets\part4_tileset");
         }
 
         public void Draw(SpriteBatch spriteBatch)
