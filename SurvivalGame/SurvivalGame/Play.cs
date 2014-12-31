@@ -12,6 +12,8 @@ namespace SurvivalGame
     class Play
     {
         MapReader mapReader = new MapReader();
+        Character character = new Character();
+
         public Play()
         {
         }
@@ -19,6 +21,7 @@ namespace SurvivalGame
         public void LoadContent(ContentManager content)
         {
             mapReader.LoadContent(content);
+            character.LoadContent(content);
             Camera.ViewWidth = Program.game.graphics.PreferredBackBufferWidth;
             Camera.ViewHeight = Program.game.graphics.PreferredBackBufferHeight;
             Camera.WorldWidth = ((mapReader.myMap.MapWidth - 2) * Tile.TileStepX);
@@ -28,31 +31,86 @@ namespace SurvivalGame
 
         public void Update(GameTime gameTime)
         {
+            Vector2 moveVector = Vector2.Zero;
+            Vector2 moveDir = Vector2.Zero;
+            string animation = "";
+
             KeyboardState ks = Keyboard.GetState();
-            if (ks.IsKeyDown(Keys.Left))
+
+            if (ks.IsKeyDown(Keys.Left) && ks.IsKeyDown(Keys.Up))
             {
-                Camera.Move(new Vector2(-2, 0));
+                moveDir = new Vector2(-2, -1);
+                animation = "WalkNorthWest";
+                moveVector += new Vector2(-2, -1);
             }
 
-            if (ks.IsKeyDown(Keys.Right))
+            else if (ks.IsKeyDown(Keys.Right) && ks.IsKeyDown(Keys.Up))
             {
-                Camera.Move(new Vector2(2, 0));
+                moveDir = new Vector2(2, -1);
+                animation = "WalkNorthEast";
+                moveVector += new Vector2(2, -1);
             }
 
-            if (ks.IsKeyDown(Keys.Up))
+            else if (ks.IsKeyDown(Keys.Left) && ks.IsKeyDown(Keys.Down))
             {
-                Camera.Move(new Vector2(0, -2));
+                moveDir = new Vector2(-2, 1);
+                animation = "WalkSouthWest";
+                moveVector += new Vector2(-2, 1);
             }
 
-            if (ks.IsKeyDown(Keys.Down))
+            else if (ks.IsKeyDown(Keys.Right) && ks.IsKeyDown(Keys.Down))
             {
-                Camera.Move(new Vector2(0, 2));
+                moveDir = new Vector2(2, 1);
+                animation = "WalkSouthEast";
+                moveVector += new Vector2(2, 1);
             }
+
+            else if (ks.IsKeyDown(Keys.Up))
+            {
+                moveDir = new Vector2(0, -1);
+                animation = "WalkNorth";
+                moveVector += new Vector2(0, -1);
+            }
+
+            else if (ks.IsKeyDown(Keys.Left))
+            {
+                moveDir = new Vector2(-2, 0);
+                animation = "WalkWest";
+                moveVector += new Vector2(-2, 0);
+            }
+
+            else if (ks.IsKeyDown(Keys.Right))
+            {
+                moveDir = new Vector2(2, 0);
+                animation = "WalkEast";
+                moveVector += new Vector2(2, 0);
+            }
+
+            else if (ks.IsKeyDown(Keys.Down))
+            {
+                moveDir = new Vector2(0, 1);
+                animation = "WalkSouth";
+                moveVector += new Vector2(0, 1);
+            }
+
+            if (moveDir.Length() != 0)
+            {
+                character.vlad.MoveBy((int)moveDir.X, (int)moveDir.Y);
+                if (character.vlad.CurrentAnimation != animation)
+                    character.vlad.CurrentAnimation = animation;
+            }
+            else
+            {
+                character.vlad.CurrentAnimation = "Idle" + character.vlad.CurrentAnimation.Substring(4);
+            }
+
+            character.vlad.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             mapReader.Draw(spriteBatch);
+            character.Draw(spriteBatch);
         }
     }
 }
