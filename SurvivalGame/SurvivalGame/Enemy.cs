@@ -8,5 +8,12 @@ namespace SurvivalGame
     class Enemy
     {
         public bool isDead { get; set; }
+        private int strength;
+        private int health;
+
+        public void move()
+        {
+
+        }
     }
 }
