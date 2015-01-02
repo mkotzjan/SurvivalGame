@@ -7,5 +7,6 @@ namespace SurvivalGame
 {
     class Enemy
     {
+        public bool isDead { get; set; }
     }
 }
