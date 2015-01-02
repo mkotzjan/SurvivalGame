@@ -15,5 +15,10 @@ namespace SurvivalGame
         {
 
         }
+
+        public void draw(SpriteBatch spriteBatch)
+        {
+
+        }
     }
 }
