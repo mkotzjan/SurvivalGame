@@ -74,6 +74,15 @@
       <Time>2014-12-30T15:11:01.8225231+01:00</Time>
     </Item>
     <Item>
+      <Source>Textures\Characters\T_Vlad_Sword_Walking_48x48.png</Source>
+      <Name>Textures\Characters\T_Vlad_Sword_Walking_48x48</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\Characters\T_Vlad_Sword_Walking_48x48.xnb</Output>
+      <Time>2014-12-31T11:56:20.4587552+01:00</Time>
+    </Item>
+    <Item>
       <Source>Sound\button-10.wav</Source>
       <Name>Sound\button-10</Name>
       <Importer>WavImporter</Importer>
@@ -90,15 +99,6 @@
       <Options>None</Options>
       <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Sound\button-4.xnb</Output>
       <Time>2014-12-27T15:24:06.5404721+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Characters\T_Vlad_Sword_Walking_48x48.png</Source>
-      <Name>Textures\Characters\T_Vlad_Sword_Walking_48x48</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\Characters\T_Vlad_Sword_Walking_48x48.xnb</Output>
-      <Time>2014-12-31T11:56:20.4587552+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

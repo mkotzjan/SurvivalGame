@@ -10,7 +10,6 @@ C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x
 C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Sound\button-4.xnb
 C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\SurvivalGame.exe
 C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\SurvivalGame.pdb
-C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x86\Release\SurvivalGame.csprojResolveAssemblyReference.cache
 C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x86\Release\SurvivalGame.exe
 C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x86\Release\SurvivalGame.pdb

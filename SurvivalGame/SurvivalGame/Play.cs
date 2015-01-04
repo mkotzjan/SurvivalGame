@@ -104,6 +104,35 @@ namespace SurvivalGame
                 character.vlad.CurrentAnimation = "Idle" + character.vlad.CurrentAnimation.Substring(4);
             }
 
+            float vladX = MathHelper.Clamp(
+                character.vlad.Position.X, 0 - character.vlad.DrawOffset.X - mapReader.baseOffsetX, Camera.WorldWidth);
+            float vladY = MathHelper.Clamp(
+                character.vlad.Position.Y, 0 - character.vlad.DrawOffset.Y - mapReader.baseOffsetY, Camera.WorldHeight);
+
+            character.vlad.Position = new Vector2(vladX, vladY);
+
+            Vector2 testPosition = Camera.WorldToScreen(character.vlad.Position);
+
+            if (testPosition.X < 100)
+            {
+                Camera.Move(new Vector2(testPosition.X - 100, 0));
+            }
+
+            if (testPosition.X > (Camera.ViewWidth - 100))
+            {
+                Camera.Move(new Vector2(testPosition.X - (Camera.ViewWidth - 100), 0));
+            }
+
+            if (testPosition.Y < 100)
+            {
+                Camera.Move(new Vector2(0, testPosition.Y - 100));
+            }
+
+            if (testPosition.Y > (Camera.ViewHeight - 100))
+            {
+                Camera.Move(new Vector2(0, testPosition.Y - (Camera.ViewHeight - 100)));
+            }
+
             character.vlad.Update(gameTime);
         }
 
