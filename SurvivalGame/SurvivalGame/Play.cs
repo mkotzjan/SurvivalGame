@@ -9,9 +9,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SurvivalGame
 {
-    class Play
+    public class Play
     {
-        MapReader mapReader = new MapReader();
+        public MapReader mapReader = new MapReader();
         Character character = new Character();
 
         public Play()

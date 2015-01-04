@@ -42,7 +42,9 @@ namespace SurvivalGame
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            vlad.Draw(spriteBatch, 0, 0);
+            Point vladStandingOn = Program.game.play.mapReader.myMap.WorldToMapCell(new Point((int)vlad.Position.X, (int)vlad.Position.Y));
+            int vladHeight = Program.game.play.mapReader.myMap.Rows[vladStandingOn.Y].Colums[vladStandingOn.X].HeightTiles.Count * Tile.HeightTileOffset;
+            vlad.Draw(spriteBatch, 0, -vladHeight);
         }
     }
 }

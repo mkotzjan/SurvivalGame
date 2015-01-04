@@ -21,7 +21,7 @@ namespace SurvivalGame
         public enum GameState {Play, Options, Menu};
         public static GameState gameState;
         MenuComponent menu;
-        Play play;
+        public Play play;
 
         public static Rectangle screen;
 
