@@ -14,9 +14,6 @@ namespace SurvivalGame
 {
     class MenuComponent
     {
-        GraphicsDeviceManager graphics;
-        SoundEffect soundEffect;
-
         KeyboardState keyboard;
         KeyboardState prevKeyboard;
 
@@ -31,6 +28,9 @@ namespace SurvivalGame
 
         Game1.GameState selected = Game1.GameState.Play;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MenuComponent()
         {
             buttonList.Add("Play");
@@ -39,21 +39,18 @@ namespace SurvivalGame
         }
 
         /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
+        /// Loads the menu content
         /// </summary>
+        /// <param name="content"></param>
         public void LoadContent(ContentManager content)
         {
-            // spriteBatch = new SpriteBatch(GraphicsDevice);
             spriteFont = content.Load<SpriteFont>(@"Fonts\Menu");
-            soundEffect = content.Load<SoundEffect>(@"Sound\button-10");
         }
 
         /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
+        /// Update the Menu
         /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
             keyboard = Keyboard.GetState();
@@ -64,7 +61,6 @@ namespace SurvivalGame
                 if (selected > 0)
                 {
                     selected--;
-                    soundEffect.Play();
                 }
             }
             else if (CheckKeyboard(Keys.Down))
@@ -72,7 +68,6 @@ namespace SurvivalGame
                 if ((int)selected < buttonList.Count - 1)
                 {
                     selected++;
-                    soundEffect.Play();
                 }
             }
 
@@ -90,22 +85,41 @@ namespace SurvivalGame
             prevMouse = mouse;
         }
 
+        /// <summary>
+        /// Check for mouse click
+        /// </summary>
+        /// <returns>true or false</returns>
         public bool CheckMouse()
         {
             return (mouse.LeftButton == ButtonState.Pressed && prevMouse.LeftButton == ButtonState.Released);
         }
 
+        /// <summary>
+        /// Check if given key is pressed
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns>true or false</returns>
         public bool CheckKeyboard(Keys key)
         {
             return (keyboard.IsKeyDown(key)  && !prevKeyboard.IsKeyDown(key));
         }
 
         /// <summary>
-        /// This is called when the game should draw itself.
+        /// This is called when the menu should draw itself
         /// </summary>
         public void Draw(SpriteBatch spriteBatch)
         {
             Program.game.SetBackground(new Color(30, 30, 30));
+            normalPosition(spriteBatch);
+        }
+
+
+        /// <summary>
+        /// The normal menu position
+        /// </summary>
+        /// <param name="spriteBatch"></param>
+        private void normalPosition(SpriteBatch spriteBatch)
+        {
             float x = 0;
             for (int i = 0; i < buttonList.Count; i++)
             {
@@ -118,8 +132,8 @@ namespace SurvivalGame
                 {
                     x = 0;
                 }
-                spriteBatch.DrawString(spriteFont, buttonList[i], new Vector2((Game1.screen.Width / 2) - 
-                     + x, ((Game1.screen.Height / 2) -
+                spriteBatch.DrawString(spriteFont, buttonList[i], new Vector2((Game1.screen.Width / 2) -
+                     +x, ((Game1.screen.Height / 2) -
                     (spriteFont.LineSpacing * buttonList.Count) / 2) +
                     (spriteFont.LineSpacing + linePadding * i)), color);
             }

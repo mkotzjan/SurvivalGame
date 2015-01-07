@@ -11,7 +11,7 @@ namespace SurvivalGame
 {
     public class Play
     {
-        public MapReader mapReader = new MapReader();
+        public MapDrawer mapReader = new MapDrawer();
         public Character character = new Character();
 
         public Play()

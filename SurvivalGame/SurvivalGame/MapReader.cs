@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SurvivalGame
 {
-    public class MapReader
+    public class MapDrawer
     {
         public MapMaker myMap;
         public int squaresAcross = 17;
