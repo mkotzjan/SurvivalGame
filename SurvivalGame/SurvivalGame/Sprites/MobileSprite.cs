@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SurvivalGame
 {
-    class MobileSprite
+    public class MobileSprite
     {
         // The SpriteAnimation object that holds the graphical and animation data for this object
         SpriteAnimation asSprite;

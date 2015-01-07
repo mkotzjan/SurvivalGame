@@ -12,7 +12,7 @@ namespace SurvivalGame
     public class Play
     {
         public MapReader mapReader = new MapReader();
-        Character character = new Character();
+        public Character character = new Character();
 
         public Play()
         {
@@ -94,6 +94,11 @@ namespace SurvivalGame
             }
 
             if (mapReader.myMap.GetCellAtWorldPoint(character.vlad.Position + moveDir).Walkable == false)
+            {
+                moveDir = Vector2.Zero;
+            }
+
+            if (Math.Abs(mapReader.myMap.GetOverallHeight(character.vlad.Position) - mapReader.myMap.GetOverallHeight(character.vlad.Position + moveDir)) > 10)
             {
                 moveDir = Vector2.Zero;
             }

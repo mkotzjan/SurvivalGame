@@ -16,7 +16,7 @@ namespace SurvivalGame
         public int squaresDown = 37;
         public int baseOffsetX = -32;
         public int baseOffsetY = -64;
-        float heightRowDepthMod = 0.0000001f;
+        float heightRowDepthMod = 0.00001f;
         private Texture2D hilight;
 
         SpriteFont pericles6;
@@ -47,6 +47,8 @@ namespace SurvivalGame
             float maxdepth = ((myMap.MapWidth + 1) + ((myMap.MapHeight + 1) * Tile.TileWidth)) * 10;
             float depthOffset;
 
+            Point vladMapPoint = myMap.WorldToMapCell(new Point((int)Program.game.play.character.vlad.Position.X, (int)Program.game.play.character.vlad.Position.Y));
+
             for (int y = 0; y < squaresDown; y++)
             {
                 int rowOffset = 0;
@@ -58,15 +60,15 @@ namespace SurvivalGame
                     int mapx = (firstX + x);
                     int mapy = (firstY + y);
                     depthOffset = 0.7f - ((mapx + (mapy * Tile.TileWidth)) / maxdepth);
+
                     if ((mapx >= myMap.MapWidth) || (mapy >= myMap.MapHeight))
                         continue;
+
                     foreach (int tileID in myMap.Rows[mapy].Columns[mapx].BaseTiles)
                     {
                         spriteBatch.Draw(
-
                             Tile.TileSetTexture,
                             Camera.WorldToScreen(
-
                                 new Vector2((mapx * Tile.TileStepX) + rowOffset, mapy * Tile.TileStepY)),
                             Tile.GetSourceRectangle(tileID),
                             Color.White,
@@ -101,7 +103,6 @@ namespace SurvivalGame
                         spriteBatch.Draw(
                             Tile.TileSetTexture,
                             Camera.WorldToScreen(
-
                                 new Vector2((mapx * Tile.TileStepX) + rowOffset, mapy * Tile.TileStepY)),
                             Tile.GetSourceRectangle(tileID),
                             Color.White,
@@ -110,6 +111,11 @@ namespace SurvivalGame
                             1.0f,
                             SpriteEffects.None,
                             depthOffset - ((float)heightRow * heightRowDepthMod));
+                    }
+
+                    if ((mapx == vladMapPoint.X) && (mapy == vladMapPoint.Y))
+                    {
+                        Program.game.play.character.vlad.DrawDepth = depthOffset - (float)(heightRow + 2) * heightRowDepthMod;
                     }
 
                     if (DebugOverlay)

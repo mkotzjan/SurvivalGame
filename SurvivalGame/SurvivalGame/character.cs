@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SurvivalGame
 {
-    class Character
+    public class Character
     {
         public SpriteAnimation vlad;
         public void LoadContent(ContentManager content)
@@ -42,9 +42,7 @@ namespace SurvivalGame
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Point vladStandingOn = Program.game.play.mapReader.myMap.WorldToMapCell(new Point((int)vlad.Position.X, (int)vlad.Position.Y));
-            int vladHeight = Program.game.play.mapReader.myMap.Rows[vladStandingOn.Y].Columns[vladStandingOn.X].HeightTiles.Count * Tile.HeightTileOffset;
-            vlad.Draw(spriteBatch, 0, -vladHeight);
+            vlad.Draw(spriteBatch, 0, -Program.game.play.mapReader.myMap.GetOverallHeight(vlad.Position));
         }
     }
 }

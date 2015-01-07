@@ -199,7 +199,52 @@ namespace SurvivalGame
             return GetCellAtWorldPoint(new Point((int)worldPoint.X, (int)worldPoint.Y));
         }
 
+        public int GetSlopeMapHeight(Point localPixel, int slopeMap)
+        {
 
+            Point texturePoint = new Point(slopeMap * mouseMap.Width + localPixel.X, localPixel.Y);
+
+            Color[] slopeColor = new Color[1];
+
+            if (new Rectangle(0, 0, slopeMaps.Width, slopeMaps.Height).Contains(texturePoint.X, texturePoint.Y))
+            {
+                slopeMaps.GetData(0, new Rectangle(texturePoint.X, texturePoint.Y, 1, 1), slopeColor, 0, 1);
+
+                int offset = (int)(((float)(255 - slopeColor[0].R) / 255f) * Tile.HeightTileOffset);
+
+                return offset;
+            }
+
+            return 0;
+        }
+
+        public int GetSlopeHeightAtWorldPoint(Point worldPoint)
+        {
+            Point localPoint;
+            Point mapPoint = WorldToMapCell(worldPoint, out localPoint);
+            int slopeMap = Rows[mapPoint.Y].Columns[mapPoint.X].SlopeMap;
+
+            return GetSlopeMapHeight(localPoint, slopeMap);
+        }
+
+        public int GetSlopeHeightAtWorldPoint(Vector2 worldPoint)
+        {
+            return GetSlopeHeightAtWorldPoint(new Point((int)worldPoint.X, (int)worldPoint.Y));
+        }
+
+        public int GetOverallHeight(Point worldPoint)
+        {
+            Point mapCellPoint = WorldToMapCell(worldPoint);
+            int height = Rows[mapCellPoint.Y].Columns[mapCellPoint.X].HeightTiles.Count * Tile.HeightTileOffset;
+            height += GetSlopeHeightAtWorldPoint(worldPoint);
+
+            return height;
+        }
+
+        public int GetOverallHeight(Vector2 worldPoint)
+        {
+            return GetOverallHeight(new Point((int)worldPoint.X, (int)worldPoint.Y));
+        }
     }
 
     public class MapRow

@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace SurvivalGame
 {
-    class FrameAnimation : ICloneable
+    public class FrameAnimation : ICloneable
     {
         // The first frame of the Animation.  We will calculate other
         // frames on the fly based on this frame.

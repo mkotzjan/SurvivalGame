@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace SurvivalGame
 {
-    class SpriteAnimation
+    public class SpriteAnimation
     {
 
         public Vector2 DrawOffset { get; set; }
