@@ -91,6 +91,24 @@
       <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\TileSets\mousemap.xnb</Output>
       <Time>2014-12-30T15:11:01.8225231+01:00</Time>
     </Item>
+    <Item>
+      <Source>Textures\Characters\T_Vlad_Sword_Walking_48x48.png</Source>
+      <Name>Textures\Characters\T_Vlad_Sword_Walking_48x48</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\Characters\T_Vlad_Sword_Walking_48x48.xnb</Output>
+      <Time>2014-12-31T11:56:20.4587552+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\TileSets\slopemaps.png</Source>
+      <Name>Textures\TileSets\slopemaps</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\TileSets\slopemaps.xnb</Output>
+      <Time>2015-01-07T10:58:30.6496898+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{C95B15FF-0960-4907-ACA3-58336F1E67B7}</ContentProjectGUID>

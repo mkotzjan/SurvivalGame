@@ -14,3 +14,5 @@ C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x
 C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Fonts\Pericles6.xnb
 C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\TileSets\hilight.xnb
 C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\TileSets\mousemap.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\Characters\T_Vlad_Sword_Walking_48x48.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\TileSets\slopemaps.xnb

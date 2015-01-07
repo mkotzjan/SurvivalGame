@@ -93,6 +93,11 @@ namespace SurvivalGame
                 moveVector += new Vector2(0, 1);
             }
 
+            if (mapReader.myMap.GetCellAtWorldPoint(character.vlad.Position + moveDir).Walkable == false)
+            {
+                moveDir = Vector2.Zero;
+            }
+
             if (moveDir.Length() != 0)
             {
                 character.vlad.MoveBy((int)moveDir.X, (int)moveDir.Y);

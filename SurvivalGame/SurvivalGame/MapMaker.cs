@@ -10,13 +10,15 @@ namespace SurvivalGame
     public class MapMaker
     {
         private Texture2D mouseMap;
+        private Texture2D slopeMaps;
         public List<MapRow> Rows = new List<MapRow>();
         public int MapWidth = 50;
         public int MapHeight = 50;
 
-        public MapMaker(Texture2D mouseMap)
+        public MapMaker(Texture2D mouseMap, Texture2D slopeMap)
         {
             this.mouseMap = mouseMap;
+            this.slopeMaps = slopeMap;
             for (int y = 0; y < MapHeight; y++)
             {
                 MapRow thisRow = new MapRow();
@@ -96,6 +98,24 @@ namespace SurvivalGame
             Rows[15].Columns[5].Walkable = false;
             Rows[16].Columns[6].Walkable = false;
 
+            Rows[12].Columns[9].AddHeightTile(34);
+            Rows[11].Columns[9].AddHeightTile(34);
+            Rows[11].Columns[8].AddHeightTile(34);
+            Rows[10].Columns[9].AddHeightTile(34);
+
+            Rows[12].Columns[8].AddTopperTile(31);
+            Rows[12].Columns[8].SlopeMap = 0;
+            Rows[13].Columns[8].AddTopperTile(31);
+            Rows[13].Columns[8].SlopeMap = 0;
+
+            Rows[12].Columns[10].AddTopperTile(32);
+            Rows[12].Columns[10].SlopeMap = 1;
+            Rows[13].Columns[9].AddTopperTile(32);
+            Rows[13].Columns[9].SlopeMap = 1;
+
+            Rows[14].Columns[9].AddTopperTile(30);
+            Rows[14].Columns[9].SlopeMap = 4;
+
             // End Create Sample Map Data
         }
 
@@ -162,6 +182,24 @@ namespace SurvivalGame
             Point dummy;
             return WorldToMapCell(worldPoint, out dummy);
         }
+
+        public Point WorldToMapCell(Vector2 worldPoint)
+        {
+            return WorldToMapCell(new Point((int)worldPoint.X, (int)worldPoint.Y));
+        }
+
+        public MapCell GetCellAtWorldPoint(Point worldPoint)
+        {
+            Point mapPoint = WorldToMapCell(worldPoint);
+            return Rows[mapPoint.Y].Columns[mapPoint.X];
+        }
+
+        public MapCell GetCellAtWorldPoint(Vector2 worldPoint)
+        {
+            return GetCellAtWorldPoint(new Point((int)worldPoint.X, (int)worldPoint.Y));
+        }
+
+
     }
 
     public class MapRow

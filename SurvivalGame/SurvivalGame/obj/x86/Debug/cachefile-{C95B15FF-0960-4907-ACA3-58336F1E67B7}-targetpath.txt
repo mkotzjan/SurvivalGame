@@ -8,3 +8,5 @@ Content\Fonts\Menu.xnb
 Content\Fonts\Pericles6.xnb
 Content\Textures\TileSets\hilight.xnb
 Content\Textures\TileSets\mousemap.xnb
+Content\Textures\Characters\T_Vlad_Sword_Walking_48x48.xnb
+Content\Textures\TileSets\slopemaps.xnb
