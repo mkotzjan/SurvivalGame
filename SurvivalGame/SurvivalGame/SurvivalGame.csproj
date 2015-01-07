@@ -77,7 +77,7 @@
     <Compile Include="Enemy.cs" />
     <Compile Include="MapCell.cs" />
     <Compile Include="MapMaker.cs" />
-    <Compile Include="MapReader.cs" />
+    <Compile Include="MapDrawer.cs" />
     <Compile Include="MenuComponent.cs" />
     <Compile Include="Play.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
