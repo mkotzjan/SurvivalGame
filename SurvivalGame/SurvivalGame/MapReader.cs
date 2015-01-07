@@ -17,7 +17,7 @@ namespace SurvivalGame
         public int baseOffsetX = -32;
         public int baseOffsetY = -64;
         float heightRowDepthMod = 0.0000001f;
-        Texture2D hilight;
+        private Texture2D hilight;
 
         SpriteFont pericles6;
         private bool DebugOverlay = false;
@@ -27,7 +27,8 @@ namespace SurvivalGame
             Tile.TileSetTexture = content.Load<Texture2D>(@"Textures\TileSets\part4_tileset");
             pericles6 = content.Load<SpriteFont>(@"Fonts\Pericles6");
             hilight = content.Load<Texture2D>(@"Textures\TileSets\hilight");
-            myMap = new MapMaker(content.Load<Texture2D>(@"Textures\TileSets\mousemap"));
+            myMap = new MapMaker(content.Load<Texture2D>(@"Textures\TileSets\mousemap"),
+                content.Load<Texture2D>(@"Textures\TileSets\slopemaps"));
         }
 
         public void Draw(SpriteBatch spriteBatch)
