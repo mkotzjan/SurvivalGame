@@ -295,13 +295,11 @@ namespace SurvivalGame
 
         public void Draw(SpriteBatch spriteBatch, int XOffset, int YOffset)
         {
-            spriteBatch.Begin();
             if (bAnimating)
                 spriteBatch.Draw(t2dTexture,
                     Camera.WorldToScreen(v2Position) + v2Center + DrawOffset + new Vector2(XOffset, YOffset),
                     CurrentFrameAnimation.FrameRectangle, colorTint,
                     fRotation, v2Center, 1f, SpriteEffects.None, DrawDepth);
-            spriteBatch.End();
         }
     }
 }

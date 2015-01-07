@@ -107,7 +107,6 @@ namespace SurvivalGame
         {
             Program.game.SetBackground(new Color(30, 30, 30));
             float x = 0;
-            spriteBatch.Begin();
             for (int i = 0; i < buttonList.Count; i++)
             {
                 color = (i == (int)selected) ? new Color(180, 180, 100) : new Color(58, 58, 58);
@@ -124,7 +123,6 @@ namespace SurvivalGame
                     (spriteFont.LineSpacing * buttonList.Count) / 2) +
                     (spriteFont.LineSpacing + linePadding * i)), color);
             }
-            spriteBatch.End();
         }
     }
 }

@@ -112,6 +112,7 @@ namespace SurvivalGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             // Switchcase for changed gamestatus
             switch (gameState)
             {
@@ -124,7 +125,7 @@ namespace SurvivalGame
                 case GameState.Options:
                     break;
             }
-
+            spriteBatch.End();
             base.Draw(gameTime);
         }
 

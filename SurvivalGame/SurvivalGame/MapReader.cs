@@ -34,8 +34,6 @@ namespace SurvivalGame
         public void Draw(SpriteBatch spriteBatch)
         {
             Program.game.SetBackground(Color.Black);
-            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
-
             Vector2 firstSquare = new Vector2(Camera.Location.X / Tile.TileStepX, Camera.Location.Y / Tile.TileStepY);
             int firstX = (int)firstSquare.X;
             int firstY = (int)firstSquare.Y;
@@ -151,7 +149,6 @@ namespace SurvivalGame
                             1.0f,
                             SpriteEffects.None,
                             0.0f);
-            spriteBatch.End();
         }
     }
 }
