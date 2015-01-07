@@ -14,3 +14,4 @@ C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x
 C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x86\Release\SurvivalGame.exe
 C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x86\Release\SurvivalGame.pdb
 C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\Characters\T_Vlad_Sword_Walking_48x48.xnb
+C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\obj\x86\Release\SurvivalGame.csprojResolveAssemblyReference.cache

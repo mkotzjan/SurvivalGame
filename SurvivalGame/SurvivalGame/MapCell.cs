@@ -10,6 +10,13 @@ namespace SurvivalGame
         public List<int> BaseTiles = new List<int>();
         public List<int> HeightTiles = new List<int>();
         public List<int> TopperTiles = new List<int>();
+        public bool Walkable { get; set; }
+
+        public MapCell(int tileID)
+        {
+            TileID = tileID;
+            Walkable = true;
+        }
 
         public int TileID
         {
@@ -36,11 +43,6 @@ namespace SurvivalGame
         public void AddTopperTile(int tileID)
         {
             TopperTiles.Add(tileID);
-        }
-
-        public MapCell(int tileID)
-        {
-            TileID = tileID;
         }
     }
 }

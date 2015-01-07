@@ -59,7 +59,7 @@ namespace SurvivalGame
                     depthOffset = 0.7f - ((mapx + (mapy * Tile.TileWidth)) / maxdepth);
                     if ((mapx >= myMap.MapWidth) || (mapy >= myMap.MapHeight))
                         continue;
-                    foreach (int tileID in myMap.Rows[mapy].Colums[mapx].BaseTiles)
+                    foreach (int tileID in myMap.Rows[mapy].Columns[mapx].BaseTiles)
                     {
                         spriteBatch.Draw(
 
@@ -77,7 +77,7 @@ namespace SurvivalGame
                     }
                     int heightRow = 0;
 
-                    foreach (int tileID in myMap.Rows[mapy].Colums[mapx].HeightTiles)
+                    foreach (int tileID in myMap.Rows[mapy].Columns[mapx].HeightTiles)
                     {
                         spriteBatch.Draw(
                             Tile.TileSetTexture,
@@ -95,7 +95,7 @@ namespace SurvivalGame
                         heightRow++;
                     }
 
-                    foreach (int tileID in myMap.Rows[y + firstY].Colums[x + firstX].TopperTiles)
+                    foreach (int tileID in myMap.Rows[y + firstY].Columns[x + firstX].TopperTiles)
                     {
                         spriteBatch.Draw(
                             Tile.TileSetTexture,
