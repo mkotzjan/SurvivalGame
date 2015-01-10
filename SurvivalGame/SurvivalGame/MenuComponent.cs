@@ -120,13 +120,13 @@ namespace SurvivalGame
         /// <param name="spriteBatch"></param>
         private void normalPosition(SpriteBatch spriteBatch)
         {
-            float x = 0;
+            int x = 0;
             for (int i = 0; i < buttonList.Count; i++)
             {
                 color = (i == (int)selected) ? new Color(180, 180, 100) : new Color(58, 58, 58);
                 if (i == (int)selected)
                 {
-                    x += 10;
+                    x = 5;
                 }
                 else
                 {
