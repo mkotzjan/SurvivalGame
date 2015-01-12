@@ -150,7 +150,7 @@ namespace SurvivalGame
                      +x, ((Game1.screen.Height / 2) -
                     (spriteFont.LineSpacing * buttonList.Count) / 2) +
                     (spriteFont.LineSpacing + linePadding * i)), color);
-                spinner.Draw(spriteBatch, spriteFont, new Vector2(20, 20), new Color(58, 58, 58));
+                spinner.Draw(spriteBatch, spriteFont, new Vector2(20, 20), new Color(58, 58, 58), new Color(180, 180, 100));
             }
         }
     }

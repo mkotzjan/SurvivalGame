@@ -60,13 +60,15 @@ namespace SurvivalGame.GUI
             prevKeyboard = keyboard;
         }
 
-        public void Draw(SpriteBatch spriteBatch, SpriteFont spriteFont, Vector2 pos, Color color)
+        public void Draw(SpriteBatch spriteBatch, SpriteFont spriteFont, Vector2 pos, Color normalColor, Color selectedColor)
         {
-            for (int i = 0; i < quantity; i++)
+            int selectedFrozen = 0 - selected;
+            for (int i = selectedFrozen; i < selectedFrozen + quantity; i++)
             {
+                Color color = (i + selected == (int)selected) ? selectedColor : normalColor;
                 if (contentList.Any())
                 {
-                    spriteBatch.DrawString(spriteFont, contentList[i], new Vector2(pos.X, pos.Y + (30 * i)), color);
+                    spriteBatch.DrawString(spriteFont, contentList[i + selected], new Vector2(pos.X, pos.Y + (20 * i)), color);
                 }
             }
         }
