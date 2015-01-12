@@ -77,6 +77,9 @@ namespace SurvivalGame
 
             Rows[15].Columns[4].AddHeightTile(54);
             Rows[15].Columns[4].AddHeightTile(54);
+            Rows[15].Columns[4].AddHeightTile(54);
+            Rows[15].Columns[4].AddHeightTile(54);
+            Rows[15].Columns[4].AddHeightTile(54);
             Rows[15].Columns[4].AddHeightTile(51);
 
             Rows[18].Columns[3].AddHeightTile(51);
