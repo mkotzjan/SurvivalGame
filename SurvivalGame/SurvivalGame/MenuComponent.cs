@@ -10,6 +10,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+using SurvivalGame.GUI;
+
 namespace SurvivalGame
 {
     class MenuComponent
@@ -28,6 +30,9 @@ namespace SurvivalGame
 
         Game1.GameState selected = Game1.GameState.Play;
 
+        Spinner spinner;
+        List<string> spinnerList = new List<string>();
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -36,6 +41,13 @@ namespace SurvivalGame
             buttonList.Add("Play");
             buttonList.Add("Options");
             buttonList.Add("Exit");
+
+            spinnerList.Add("Test1");
+            spinnerList.Add("Test2");
+            spinnerList.Add("Test3");
+            spinnerList.Add("Test4");
+            spinnerList.Add("Test5");
+            spinner = new Spinner(spinnerList);
         }
 
         /// <summary>
@@ -83,6 +95,8 @@ namespace SurvivalGame
 
             prevKeyboard = keyboard;
             prevMouse = mouse;
+
+            spinner.Update(gameTime);
         }
 
         /// <summary>
@@ -136,6 +150,7 @@ namespace SurvivalGame
                      +x, ((Game1.screen.Height / 2) -
                     (spriteFont.LineSpacing * buttonList.Count) / 2) +
                     (spriteFont.LineSpacing + linePadding * i)), color);
+                spinner.Draw(spriteBatch, spriteFont, new Vector2(20, 20), new Color(58, 58, 58));
             }
         }
     }

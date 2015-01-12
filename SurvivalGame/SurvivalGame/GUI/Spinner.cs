@@ -16,7 +16,6 @@ namespace SurvivalGame.GUI
     {
         // Variables
         List<string> contentList;
-        Dictionary<int, string> contentDict;
 
         int quantity;
         int selected;
@@ -32,17 +31,6 @@ namespace SurvivalGame.GUI
         {
             contentList = list;
             quantity = list.Count();
-            selected = 0;
-        }
-
-        /// <summary>
-        /// Constructor for Dictionarys
-        /// </summary>
-        /// <param name="dict"></param>
-        public Spinner(Dictionary<int, string> dict)
-        {
-            contentDict = dict;
-            quantity = dict.Count;
             selected = 0;
         }
 
@@ -72,9 +60,15 @@ namespace SurvivalGame.GUI
             prevKeyboard = keyboard;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 pos, Color color)
+        public void Draw(SpriteBatch spriteBatch, SpriteFont spriteFont, Vector2 pos, Color color)
         {
-
+            for (int i = 0; i < quantity; i++)
+            {
+                if (contentList.Any())
+                {
+                    spriteBatch.DrawString(spriteFont, contentList[i], new Vector2(pos.X, pos.Y + (30 * i)), color);
+                }
+            }
         }
 
         /// <summary>
