@@ -123,27 +123,7 @@ namespace SurvivalGame
 
             character.vlad.Position = new Vector2(vladX, vladY);
 
-            Vector2 testPosition = Camera.WorldToScreen(character.vlad.Position);
-
-            if (testPosition.X < 100)
-            {
-                Camera.Move(new Vector2(testPosition.X - 100, 0));
-            }
-
-            if (testPosition.X > (Camera.ViewWidth - 100))
-            {
-                Camera.Move(new Vector2(testPosition.X - (Camera.ViewWidth - 100), 0));
-            }
-
-            if (testPosition.Y < 100)
-            {
-                Camera.Move(new Vector2(0, testPosition.Y - 100));
-            }
-
-            if (testPosition.Y > (Camera.ViewHeight - 100))
-            {
-                Camera.Move(new Vector2(0, testPosition.Y - (Camera.ViewHeight - 100)));
-            }
+            Camera.Move(Camera.WorldToScreen(new Vector2(character.vlad.Position.X - (Camera.ViewWidth / 2), character.vlad.Position.Y - (Camera.ViewHeight / 2))));
 
             character.vlad.Update(gameTime);
         }
