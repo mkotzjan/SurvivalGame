@@ -47,6 +47,9 @@ namespace SurvivalGame
             spinnerList.Add("Test3");
             spinnerList.Add("Test4");
             spinnerList.Add("Test5");
+            spinnerList.Add("Test6");
+            spinnerList.Add("Test7");
+            spinnerList.Add("Test8");
             spinner = new Spinner(spinnerList);
         }
 
@@ -150,7 +153,7 @@ namespace SurvivalGame
                      +x, ((Game1.screen.Height / 2) -
                     (spriteFont.LineSpacing * buttonList.Count) / 2) +
                     (spriteFont.LineSpacing + linePadding * i)), color);
-                spinner.Draw(spriteBatch, spriteFont, new Vector2(20, 20), new Color(58, 58, 58), new Color(180, 180, 100));
+                spinner.Draw(spriteBatch, spriteFont, new Vector2(50, 200), new Color(58, 58, 58), new Color(180, 180, 100));
             }
         }
     }

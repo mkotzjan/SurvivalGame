@@ -66,10 +66,7 @@ namespace SurvivalGame.GUI
             for (int i = selectedFrozen; i < selectedFrozen + quantity; i++)
             {
                 Color color = (i + selected == (int)selected) ? selectedColor : normalColor;
-                if (contentList.Any())
-                {
-                    spriteBatch.DrawString(spriteFont, contentList[i + selected], new Vector2(pos.X, pos.Y + (20 * i)), color);
-                }
+                spriteBatch.DrawString(spriteFont, contentList[i + selected], new Vector2(pos.X, pos.Y + (20 * i)), color * (1f - (0.25f * Math.Abs(i))));
             }
         }
 
