@@ -126,6 +126,7 @@ namespace SurvivalGame
             Camera.Move(Camera.WorldToScreen(new Vector2(character.vlad.Position.X - (Camera.ViewWidth / 2), character.vlad.Position.Y - (Camera.ViewHeight / 2))));
 
             character.vlad.Update(gameTime);
+            enemy.Move();
         }
 
         public void Draw(SpriteBatch spriteBatch)

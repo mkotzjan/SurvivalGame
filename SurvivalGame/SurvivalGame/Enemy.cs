@@ -43,16 +43,11 @@ namespace SurvivalGame
             vlad2.DrawOffset = new Vector2(-24, -38);
             vlad2.CurrentAnimation = "WalkEast";
             vlad2.IsAnimating = true;
-
-            vlad2.Position = new Vector2(600, 600);
-            vlad2.DrawOffset = new Vector2(-24, -38);
-            vlad2.CurrentAnimation = "WalkEast";
-            vlad2.IsAnimating = true;
         }
 
         public void Move()
         {
-
+            // this.vlad2.MoveBy(1, 1);
         }
 
         public void Draw(SpriteBatch spriteBatch)

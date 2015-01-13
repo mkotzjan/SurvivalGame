@@ -98,23 +98,23 @@ namespace SurvivalGame
             Rows[15].Columns[5].Walkable = false;
             Rows[16].Columns[6].Walkable = false;
 
-            Rows[12].Columns[9].AddHeightTile(34);
-            Rows[11].Columns[9].AddHeightTile(34);
-            Rows[11].Columns[8].AddHeightTile(34);
-            Rows[10].Columns[9].AddHeightTile(34);
+            Rows[22].Columns[9].AddHeightTile(34);
+            Rows[21].Columns[9].AddHeightTile(34);
+            Rows[21].Columns[8].AddHeightTile(34);
+            Rows[20].Columns[9].AddHeightTile(34);
 
-            Rows[12].Columns[8].AddTopperTile(31);
-            Rows[12].Columns[8].SlopeMap = 0;
-            Rows[13].Columns[8].AddTopperTile(31);
-            Rows[13].Columns[8].SlopeMap = 0;
+            Rows[22].Columns[8].AddTopperTile(31);
+            Rows[22].Columns[8].SlopeMap = 0;
+            Rows[23].Columns[8].AddTopperTile(31);
+            Rows[23].Columns[8].SlopeMap = 0;
 
-            Rows[12].Columns[10].AddTopperTile(32);
-            Rows[12].Columns[10].SlopeMap = 1;
-            Rows[13].Columns[9].AddTopperTile(32);
-            Rows[13].Columns[9].SlopeMap = 1;
+            Rows[22].Columns[10].AddTopperTile(32);
+            Rows[22].Columns[10].SlopeMap = 1;
+            Rows[23].Columns[9].AddTopperTile(32);
+            Rows[23].Columns[9].SlopeMap = 1;
 
-            Rows[14].Columns[9].AddTopperTile(30);
-            Rows[14].Columns[9].SlopeMap = 4;
+            Rows[24].Columns[9].AddTopperTile(30);
+            Rows[24].Columns[9].SlopeMap = 4;
 
             // End Create Sample Map Data
         }
