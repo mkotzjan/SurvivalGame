@@ -13,6 +13,7 @@ namespace SurvivalGame
     {
         public MapDrawer mapReader = new MapDrawer();
         public Character character = new Character();
+        public Enemy enemy = new Enemy();
 
         public Play()
         {
@@ -22,6 +23,7 @@ namespace SurvivalGame
         {
             mapReader.LoadContent(content);
             character.LoadContent(content);
+            enemy.LoadContent(content);
             Camera.ViewWidth = Program.game.graphics.PreferredBackBufferWidth;
             Camera.ViewHeight = Program.game.graphics.PreferredBackBufferHeight;
             Camera.WorldWidth = ((mapReader.myMap.MapWidth - 2) * Tile.TileStepX);
@@ -150,6 +152,7 @@ namespace SurvivalGame
         {
             mapReader.Draw(spriteBatch);
             character.Draw(spriteBatch);
+            enemy.Draw(spriteBatch);
         }
     }
 }
