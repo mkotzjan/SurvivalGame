@@ -24,7 +24,7 @@ namespace SurvivalGame
 
         public void LoadContent(ContentManager content)
         {
-            Tile.TileSetTexture = content.Load<Texture2D>(@"Textures\TileSets\part4_tileset");
+            Tile.TileSetTexture = content.Load<Texture2D>(@"Textures\TileSets\tileset");
             pericles6 = content.Load<SpriteFont>(@"Fonts\Pericles6");
             hilight = content.Load<Texture2D>(@"Textures\TileSets\hilight");
             myMap = new MapMaker(content.Load<Texture2D>(@"Textures\TileSets\mousemap"),
