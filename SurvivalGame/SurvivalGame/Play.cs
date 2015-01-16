@@ -15,6 +15,7 @@ namespace SurvivalGame
         public Character character = new Character();
         public Enemy enemy = new Enemy();
         Overlay overlay = new Overlay();
+        bool toggleOverlay = false;
 
         public Play()
         {
@@ -128,6 +129,11 @@ namespace SurvivalGame
 
             character.vlad.Update(gameTime);
             enemy.Move();
+
+            if (ks.IsKeyDown(Keys.Escape))
+            {
+                ToggleOverlay();
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -135,7 +141,15 @@ namespace SurvivalGame
             mapReader.Draw(spriteBatch);
             character.Draw(spriteBatch);
             enemy.Draw(spriteBatch);
-            overlay.Draw(spriteBatch);
+            if (toggleOverlay)
+            {
+                overlay.Draw(spriteBatch);
+            }
+        }
+
+        private void ToggleOverlay()
+        {
+            toggleOverlay = !toggleOverlay;
         }
     }
 }
