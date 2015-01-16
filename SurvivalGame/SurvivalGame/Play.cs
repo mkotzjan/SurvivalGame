@@ -14,6 +14,7 @@ namespace SurvivalGame
         public MapDrawer mapReader = new MapDrawer();
         public Character character = new Character();
         public Enemy enemy = new Enemy();
+        Overlay overlay = new Overlay();
 
         public Play()
         {
@@ -134,6 +135,7 @@ namespace SurvivalGame
             mapReader.Draw(spriteBatch);
             character.Draw(spriteBatch);
             enemy.Draw(spriteBatch);
+            overlay.Draw(spriteBatch);
         }
     }
 }

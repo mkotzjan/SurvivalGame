@@ -15,14 +15,18 @@ namespace SurvivalGame
 {
     class Overlay
     {
+        Texture2D overlay;
+        int width = Program.game.graphics.PreferredBackBufferWidth;
+        int height = Program.game.graphics.PreferredBackBufferHeight;
+
         public Overlay()
         {
-
+            
         }
 
         public void LoadContent(ContentManager content)
         {
-
+            
         }
 
         public void Update(GameTime gameTime)
@@ -30,9 +34,13 @@ namespace SurvivalGame
 
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch)
         {
-            
+            overlay = new Texture2D(Program.game.graphics.GraphicsDevice, width, height);
+            Color[] data = new Color[width * height];
+            for (int i = 0; i < data.Length; ++i) data[i] = Color.Chocolate;
+            overlay.SetData(data);
+            spriteBatch.Draw(overlay, new Vector2(0, 0), Color.Black * 0.6f);
         }
     }
 }
