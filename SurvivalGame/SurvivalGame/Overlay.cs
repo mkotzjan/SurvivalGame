@@ -25,5 +25,9 @@ namespace SurvivalGame
 
         }
 
+        public void Update(GameTime gameTime)
+        {
+
+        }
     }
 }
