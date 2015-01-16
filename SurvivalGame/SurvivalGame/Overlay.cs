@@ -29,5 +29,10 @@ namespace SurvivalGame
         {
 
         }
+
+        public void Draw()
+        {
+            
+        }
     }
 }
