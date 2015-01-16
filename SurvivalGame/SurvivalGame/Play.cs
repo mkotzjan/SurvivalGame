@@ -16,9 +16,13 @@ namespace SurvivalGame
         public Enemy enemy = new Enemy();
         Overlay overlay = new Overlay();
         bool toggleOverlay = false;
+        KeyboardState ks;
+        KeyboardState ksprev;
 
         public Play()
         {
+            ks = new KeyboardState();
+            ksprev = new KeyboardState();
         }
 
         public void LoadContent(ContentManager content)
@@ -35,105 +39,20 @@ namespace SurvivalGame
 
         public void Update(GameTime gameTime)
         {
-            Vector2 moveVector = Vector2.Zero;
-            Vector2 moveDir = Vector2.Zero;
-            string animation = "";
-
-            KeyboardState ks = Keyboard.GetState();
-
-            if (ks.IsKeyDown(Keys.Left) && ks.IsKeyDown(Keys.Up))
+            ks = Keyboard.GetState();
+            if (!toggleOverlay)
             {
-                moveDir = new Vector2(-2, -1);
-                animation = "WalkNorthWest";
-                moveVector += new Vector2(-2, -1);
+                character.Update(gameTime);
+                Camera.Move(Camera.WorldToScreen(new Vector2(character.vlad.Position.X - (Camera.ViewWidth / 2), character.vlad.Position.Y - (Camera.ViewHeight / 2))));
+                enemy.Move();
             }
 
-            else if (ks.IsKeyDown(Keys.Right) && ks.IsKeyDown(Keys.Up))
-            {
-                moveDir = new Vector2(2, -1);
-                animation = "WalkNorthEast";
-                moveVector += new Vector2(2, -1);
-            }
-
-            else if (ks.IsKeyDown(Keys.Left) && ks.IsKeyDown(Keys.Down))
-            {
-                moveDir = new Vector2(-2, 1);
-                animation = "WalkSouthWest";
-                moveVector += new Vector2(-2, 1);
-            }
-
-            else if (ks.IsKeyDown(Keys.Right) && ks.IsKeyDown(Keys.Down))
-            {
-                moveDir = new Vector2(2, 1);
-                animation = "WalkSouthEast";
-                moveVector += new Vector2(2, 1);
-            }
-
-            else if (ks.IsKeyDown(Keys.Up))
-            {
-                moveDir = new Vector2(0, -1);
-                animation = "WalkNorth";
-                moveVector += new Vector2(0, -1);
-            }
-
-            else if (ks.IsKeyDown(Keys.Left))
-            {
-                moveDir = new Vector2(-2, 0);
-                animation = "WalkWest";
-                moveVector += new Vector2(-2, 0);
-            }
-
-            else if (ks.IsKeyDown(Keys.Right))
-            {
-                moveDir = new Vector2(2, 0);
-                animation = "WalkEast";
-                moveVector += new Vector2(2, 0);
-            }
-
-            else if (ks.IsKeyDown(Keys.Down))
-            {
-                moveDir = new Vector2(0, 1);
-                animation = "WalkSouth";
-                moveVector += new Vector2(0, 1);
-            }
-
-            if (mapReader.myMap.GetCellAtWorldPoint(character.vlad.Position + moveDir).Walkable == false)
-            {
-                moveDir = Vector2.Zero;
-            }
-
-            if (Math.Abs(mapReader.myMap.GetOverallHeight(character.vlad.Position) - mapReader.myMap.GetOverallHeight(character.vlad.Position + moveDir)) > 10)
-            {
-                moveDir = Vector2.Zero;
-            }
-
-            if (moveDir.Length() != 0)
-            {
-                character.vlad.MoveBy((int)moveDir.X, (int)moveDir.Y);
-                if (character.vlad.CurrentAnimation != animation)
-                    character.vlad.CurrentAnimation = animation;
-            }
-            else
-            {
-                character.vlad.CurrentAnimation = "Idle" + character.vlad.CurrentAnimation.Substring(4);
-            }
-
-            float vladX = MathHelper.Clamp(
-                character.vlad.Position.X, 0 - character.vlad.DrawOffset.X - mapReader.baseOffsetX, Camera.WorldWidth);
-            float vladY = MathHelper.Clamp(
-                character.vlad.Position.Y, 0 - character.vlad.DrawOffset.Y - mapReader.baseOffsetY, Camera.WorldHeight);
-
-            character.vlad.Position = new Vector2(vladX, vladY);
-
-            Camera.Move(Camera.WorldToScreen(new Vector2(character.vlad.Position.X - (Camera.ViewWidth / 2), character.vlad.Position.Y - (Camera.ViewHeight / 2))));
-
-            character.vlad.Update(gameTime);
-            enemy.Move();
-
-            if (ks.IsKeyDown(Keys.Escape))
+            if (CheckKeyboardReleased(Keys.Escape))
             {
                 ToggleOverlay();
             }
+
+            ksprev = ks;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -150,6 +69,16 @@ namespace SurvivalGame
         private void ToggleOverlay()
         {
             toggleOverlay = !toggleOverlay;
+        }
+
+        private bool CheckKeyboardPressed(Keys key)
+        {
+            return (ks.IsKeyDown(key) && !ksprev.IsKeyDown(key));
+        }
+
+        private bool CheckKeyboardReleased(Keys key)
+        {
+            return (ksprev.IsKeyDown(key) && !ks.IsKeyDown(key));
         }
     }
 }

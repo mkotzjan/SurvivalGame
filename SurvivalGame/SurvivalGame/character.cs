@@ -12,6 +12,7 @@ namespace SurvivalGame
     public class Character
     {
         public SpriteAnimation vlad;
+        KeyboardState ks;
         public void LoadContent(ContentManager content)
         {
             vlad = new SpriteAnimation(content.Load<Texture2D>(@"Textures\Characters\T_Vlad_Sword_Walking_48x48"));
@@ -38,6 +39,102 @@ namespace SurvivalGame
             vlad.DrawOffset = new Vector2(-24, -38);
             vlad.CurrentAnimation = "WalkEast";
             vlad.IsAnimating = true;
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            Vector2 moveVector = Vector2.Zero;
+            Vector2 moveDir = Vector2.Zero;
+            string animation = "";
+
+            KeyboardState ks = Keyboard.GetState();
+
+            if (ks.IsKeyDown(Keys.Left) && ks.IsKeyDown(Keys.Up))
+            {
+                moveDir = new Vector2(-2, -1);
+                animation = "WalkNorthWest";
+                moveVector += new Vector2(-2, -1);
+            }
+
+            else if (ks.IsKeyDown(Keys.Right) && ks.IsKeyDown(Keys.Up))
+            {
+                moveDir = new Vector2(2, -1);
+                animation = "WalkNorthEast";
+                moveVector += new Vector2(2, -1);
+            }
+
+            else if (ks.IsKeyDown(Keys.Left) && ks.IsKeyDown(Keys.Down))
+            {
+                moveDir = new Vector2(-2, 1);
+                animation = "WalkSouthWest";
+                moveVector += new Vector2(-2, 1);
+            }
+
+            else if (ks.IsKeyDown(Keys.Right) && ks.IsKeyDown(Keys.Down))
+            {
+                moveDir = new Vector2(2, 1);
+                animation = "WalkSouthEast";
+                moveVector += new Vector2(2, 1);
+            }
+
+            else if (ks.IsKeyDown(Keys.Up))
+            {
+                moveDir = new Vector2(0, -1);
+                animation = "WalkNorth";
+                moveVector += new Vector2(0, -1);
+            }
+
+            else if (ks.IsKeyDown(Keys.Left))
+            {
+                moveDir = new Vector2(-2, 0);
+                animation = "WalkWest";
+                moveVector += new Vector2(-2, 0);
+            }
+
+            else if (ks.IsKeyDown(Keys.Right))
+            {
+                moveDir = new Vector2(2, 0);
+                animation = "WalkEast";
+                moveVector += new Vector2(2, 0);
+            }
+
+            else if (ks.IsKeyDown(Keys.Down))
+            {
+                moveDir = new Vector2(0, 1);
+                animation = "WalkSouth";
+                moveVector += new Vector2(0, 1);
+            }
+
+            if (Program.game.play.mapReader.myMap.GetCellAtWorldPoint(this.vlad.Position + moveDir).Walkable == false)
+            {
+                moveDir = Vector2.Zero;
+            }
+
+            if (Math.Abs(Program.game.play.mapReader.myMap.GetOverallHeight(this.vlad.Position)
+                - Program.game.play.mapReader.myMap.GetOverallHeight(this.vlad.Position + moveDir)) > 10)
+            {
+                moveDir = Vector2.Zero;
+            }
+
+            if (moveDir.Length() != 0)
+            {
+                this.vlad.MoveBy((int)moveDir.X, (int)moveDir.Y);
+                if (this.vlad.CurrentAnimation != animation)
+                    this.vlad.CurrentAnimation = animation;
+            }
+            else
+            {
+                this.vlad.CurrentAnimation = "Idle" + this.vlad.CurrentAnimation.Substring(4);
+            }
+
+            float vladX = MathHelper.Clamp(
+                this.vlad.Position.X, 0 - this.vlad.DrawOffset.X - Program.game.play.mapReader.baseOffsetX, Camera.WorldWidth);
+            float vladY = MathHelper.Clamp(
+                this.vlad.Position.Y, 0 - this.vlad.DrawOffset.Y - Program.game.play.mapReader.baseOffsetY, Camera.WorldHeight);
+
+            this.vlad.Position = new Vector2(vladX, vladY);
+
+            this.vlad.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
