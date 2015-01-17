@@ -20,42 +20,6 @@
       <Time>2014-12-30T12:36:39.5417134+01:00</Time>
     </Item>
     <Item>
-      <Source>Textures\TileSets\part1_tileset.png</Source>
-      <Name>Textures\TileSets\part1_tileset</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\TileSets\part1_tileset.xnb</Output>
-      <Time>2014-12-27T12:32:17.7158411+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\TileSets\part2_tileset.png</Source>
-      <Name>Textures\TileSets\part2_tileset</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\TileSets\part2_tileset.xnb</Output>
-      <Time>2014-12-29T17:02:27.1878945+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\TileSets\part3_tileset.png</Source>
-      <Name>Textures\TileSets\part3_tileset</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\TileSets\part3_tileset.xnb</Output>
-      <Time>2014-12-30T09:45:51.4465559+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\TileSets\part4_tileset.png</Source>
-      <Name>Textures\TileSets\part4_tileset</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\TileSets\part4_tileset.xnb</Output>
-      <Time>2014-12-30T10:25:29.6665823+01:00</Time>
-    </Item>
-    <Item>
       <Source>Textures\TileSets\hilight.png</Source>
       <Name>Textures\TileSets\hilight</Name>
       <Importer>TextureImporter</Importer>
@@ -108,6 +72,15 @@
       <Options>None</Options>
       <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Sound\button-4.xnb</Output>
       <Time>2014-12-27T15:24:06.5404721+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\TileSets\tileset.png</Source>
+      <Name>Textures\TileSets\tileset</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\TileSets\tileset.xnb</Output>
+      <Time>2014-12-30T10:25:29.6665823+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
