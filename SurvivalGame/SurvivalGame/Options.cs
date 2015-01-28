@@ -12,8 +12,10 @@ using Microsoft.Xna.Framework.Media;
 
 namespace SurvivalGame
 {
-    static class Options
+    public class Options
     {
+        private bool debug;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -46,6 +48,12 @@ namespace SurvivalGame
         /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
+
+        }
+
+        private void setDebug(bool set)
+        {
+            debug = set;
 
         }
     }

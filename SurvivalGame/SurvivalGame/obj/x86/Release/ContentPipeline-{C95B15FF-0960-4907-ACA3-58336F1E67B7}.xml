@@ -20,6 +20,33 @@
       <Time>2014-12-30T12:36:39.5417134+01:00</Time>
     </Item>
     <Item>
+      <Source>Sound\button-10.wav</Source>
+      <Name>Sound\button-10</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Sound\button-10.xnb</Output>
+      <Time>2014-12-27T15:24:06.5434723+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\button-4.wav</Source>
+      <Name>Sound\button-4</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Sound\button-4.xnb</Output>
+      <Time>2014-12-27T15:24:06.5404721+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\TileSets\tileset.png</Source>
+      <Name>Textures\TileSets\tileset</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\TileSets\tileset.xnb</Output>
+      <Time>2014-12-30T10:25:29.6665823+01:00</Time>
+    </Item>
+    <Item>
       <Source>Textures\TileSets\hilight.png</Source>
       <Name>Textures\TileSets\hilight</Name>
       <Importer>TextureImporter</Importer>
@@ -54,33 +81,6 @@
       <Options>None</Options>
       <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\TileSets\slopemaps.xnb</Output>
       <Time>2015-01-07T10:58:30.6496898+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Sound\button-10.wav</Source>
-      <Name>Sound\button-10</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Sound\button-10.xnb</Output>
-      <Time>2014-12-27T15:24:06.5434723+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Sound\button-4.wav</Source>
-      <Name>Sound\button-4</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Sound\button-4.xnb</Output>
-      <Time>2014-12-27T15:24:06.5404721+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\TileSets\tileset.png</Source>
-      <Name>Textures\TileSets\tileset</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Release\Content\Textures\TileSets\tileset.xnb</Output>
-      <Time>2014-12-30T10:25:29.6665823+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

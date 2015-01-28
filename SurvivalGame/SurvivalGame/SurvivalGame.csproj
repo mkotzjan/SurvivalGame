@@ -76,6 +76,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="GUI\Checkbox.cs" />
+    <Compile Include="GUI\Dialog.cs" />
     <Compile Include="GUI\Slider.cs" />
     <Compile Include="GUI\Spinner.cs" />
     <Compile Include="MapCell.cs" />
