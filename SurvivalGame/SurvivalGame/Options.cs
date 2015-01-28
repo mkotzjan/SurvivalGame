@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace SurvivalGame
 {
-    class Options
+    static class Options
     {
         /// <summary>
         /// Constructor
