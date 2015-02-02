@@ -46,6 +46,7 @@ namespace SurvivalGame
             float depthOffset;
 
             Point vladMapPoint = myMap.WorldToMapCell(new Point((int)Program.game.play.character.vlad.Position.X, (int)Program.game.play.character.vlad.Position.Y));
+            Point vlad2MapPoint = myMap.WorldToMapCell(new Point((int)Program.game.play.enemy.vlad2.Position.X, (int)Program.game.play.enemy.vlad2.Position.Y));
 
             for (int y = 0; y < squaresDown; y++)
             {
@@ -114,6 +115,12 @@ namespace SurvivalGame
                     if ((mapx == vladMapPoint.X) && (mapy == vladMapPoint.Y))
                     {
                         Program.game.play.character.vlad.DrawDepth = depthOffset - (float)(heightRow + 2) * heightRowDepthMod;
+                    }
+
+                    // Add by trying to fix draw position of enemy
+                    if ((mapx == vlad2MapPoint.X) && (mapy == vlad2MapPoint.Y))
+                    {
+                        Program.game.play.enemy.vlad2.DrawDepth = depthOffset - (float)(heightRow + 2) * heightRowDepthMod;
                     }
 
                     if (DebugOverlay)
