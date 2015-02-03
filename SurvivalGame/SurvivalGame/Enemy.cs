@@ -45,7 +45,7 @@ namespace SurvivalGame
             vlad2.IsAnimating = true;
         }
 
-        public void Move()
+        public void Move(GameTime gameTime)
         {
             Vector2 moveVector = Vector2.Zero;
             Vector2 moveDir = Vector2.Zero;
@@ -137,6 +137,8 @@ namespace SurvivalGame
                 this.vlad2.Position.Y, 0 - this.vlad2.DrawOffset.Y - Program.game.play.mapReader.baseOffsetY, Camera.WorldHeight);
 
             this.vlad2.Position = new Vector2(vladX, vladY);
+
+            this.vlad2.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)

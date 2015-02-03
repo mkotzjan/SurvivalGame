@@ -44,7 +44,7 @@ namespace SurvivalGame
             {
                 character.Update(gameTime);
                 Camera.Move(Camera.WorldToScreen(new Vector2(character.vlad.Position.X - (Camera.ViewWidth / 2), character.vlad.Position.Y - (Camera.ViewHeight / 2))));
-                enemy.Move();
+                enemy.Move(gameTime);
             }
 
             if (CheckKeyboardReleased(Keys.Escape))
