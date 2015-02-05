@@ -12,6 +12,7 @@ namespace SurvivalGame
         private Texture2D mouseMap;
         private Texture2D slopeMaps;
         private int seed;
+        private List<int> tiles;
         public List<MapRow> Rows = new List<MapRow>();
         public int MapWidth = 50;
         public int MapHeight = 50;
@@ -24,15 +25,8 @@ namespace SurvivalGame
             this.slopeMaps = slopeMap;
             seed = (int)DateTime.Now.Ticks;
             rnd = new Random(seed);
-            for (int y = 0; y < MapHeight; y++)
-            {
-                MapRow thisRow = new MapRow();
-                for (int x = 0; x < MapWidth; x++)
-                {
-                    thisRow.Columns.Add(new MapCell(0));
-                }
-                Rows.Add(thisRow);
-            }
+            generateMap();
+
             // Create Sample Map Data
             //Rows[0].Columns[3].TileID = 3;
             //Rows[0].Columns[4].TileID = 3;
@@ -130,12 +124,26 @@ namespace SurvivalGame
             this.slopeMaps = slopeMap;
             seed = (int)DateTime.Now.Ticks;
             rnd = new Random(seed);
+            generateMap();
+        }
+
+        private void generateMap()
+        {
+            if (rnd.Next() % 2 == 0)
+            {
+                tiles = new List<int>() { 0, 1 };
+            }
+            else
+            {
+                tiles = new List<int>() { 2, 3 };
+            }
+
             for (int y = 0; y < MapHeight; y++)
             {
                 MapRow thisRow = new MapRow();
                 for (int x = 0; x < MapWidth; x++)
                 {
-                    thisRow.Columns.Add(new MapCell(0));
+                    thisRow.Columns.Add(new MapCell(tiles[rnd.Next() % 2]));
                 }
                 Rows.Add(thisRow);
             }
