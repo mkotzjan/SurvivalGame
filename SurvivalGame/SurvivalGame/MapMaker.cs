@@ -12,7 +12,11 @@ namespace SurvivalGame
         private Texture2D mouseMap;
         private Texture2D slopeMaps;
         private int seed;
-        private List<int> tiles;
+        private List<int> lightTiles = new List<int>() { 0, 1 };
+        private List<int> darkTiles = new List<int>() { 2, 3 };
+        private float amountDarkTiles = 0.2f;
+        private int amountTiles;
+
         public List<MapRow> Rows = new List<MapRow>();
         public int MapWidth = 50;
         public int MapHeight = 50;
@@ -25,6 +29,7 @@ namespace SurvivalGame
             this.slopeMaps = slopeMap;
             seed = (int)DateTime.Now.Ticks;
             rnd = new Random(seed);
+            amountTiles = MapWidth * MapHeight;
             generateMap();
 
             // Create Sample Map Data
@@ -125,28 +130,36 @@ namespace SurvivalGame
             seed = (int)DateTime.Now.Ticks;
             rnd = new Random(seed);
             generateMap();
+            amountTiles = MapHeight * MapWidth;
         }
 
         private void generateMap()
         {
-            if (rnd.Next() % 2 == 0)
-            {
-                tiles = new List<int>() { 0, 1 };
-            }
-            else
-            {
-                tiles = new List<int>() { 2, 3 };
-            }
+            generateGround();
+        }
 
+        private void generateGround()
+        {
             for (int y = 0; y < MapHeight; y++)
             {
                 MapRow thisRow = new MapRow();
                 for (int x = 0; x < MapWidth; x++)
                 {
-                    thisRow.Columns.Add(new MapCell(tiles[rnd.Next() % 2]));
+                    thisRow.Columns.Add(new MapCell(lightTiles[rnd.Next() % 2]));
                 }
                 Rows.Add(thisRow);
             }
+
+            for (int i = 0; i < (int)(amountTiles * amountDarkTiles); i++)
+            {
+                setDarkTiles(rnd.Next() % MapWidth, rnd.Next() % MapHeight, i);
+            }
+        }
+
+        private int setDarkTiles(int posX, int posY, int i)
+        {
+            Rows[posY].Columns[posX].TileID = darkTiles[rnd.Next() % 2];
+            return i++;
         }
 
         public Point WorldToMapCell(Point worldPoint, out Point localPoint)
