@@ -152,14 +152,48 @@ namespace SurvivalGame
 
             for (int i = 0; i < (int)(amountTiles * amountDarkTiles); i++)
             {
-                setDarkTiles(rnd.Next() % MapWidth, rnd.Next() % MapHeight, i);
+                i = setDarkTiles(rnd.Next() % MapWidth, rnd.Next() % MapHeight, i);
             }
         }
 
         private int setDarkTiles(int posX, int posY, int i)
         {
+            // First set the Tile on given Position and increase i
             Rows[posY].Columns[posX].TileID = darkTiles[rnd.Next() % 2];
-            return i++;
+            i++;
+
+            if (i < (int)(amountTiles * amountDarkTiles))
+            {
+                // Next "infect" the surounding tiles
+                int infectedTiles = rnd.Next() % 9;
+                i += infectedTiles;
+
+                // Return if there are no tiles to infect
+                if (infectedTiles == 0)
+                {
+                    return i;
+                }
+
+                int alreadyInfected = 0;
+
+                if (infectedTiles < 5)
+                {
+                    // Add max 4 
+                    for (int j = 0; j < infectedTiles; j++)
+                    {
+                        // Infect a new one
+                        setDarkTiles((int)MathHelper.Clamp(posX + (rnd.Next() % 3) - 1, 0, MapWidth - 1),
+                            (int)MathHelper.Clamp(posY + (rnd.Next() % 3) - 1, 0, MapWidth - 1), i);
+                        alreadyInfected++;
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            
+            return i;
         }
 
         public Point WorldToMapCell(Point worldPoint, out Point localPoint)
