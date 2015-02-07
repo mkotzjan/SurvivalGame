@@ -5,5 +5,5 @@
 I used some of the tutorials at http://www.xnaresources.com/.
 The Game is still in progress.
 
-Actual project:
+### Actual project:
 Random generation of a map. 
