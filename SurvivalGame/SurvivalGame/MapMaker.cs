@@ -14,7 +14,7 @@ namespace SurvivalGame
         private int seed;
         private List<int> lightTiles = new List<int>() { 0, 1 };
         private List<int> darkTiles = new List<int>() { 2, 3 };
-        private float amountDarkTiles = 0.2f;
+        private float amountDarkTiles = 0.8f;
         private int amountTiles;
 
         public List<MapRow> Rows = new List<MapRow>();
@@ -158,13 +158,11 @@ namespace SurvivalGame
 
         private int setDarkTiles(int posX, int posY, int i)
         {
-            
-            i++;
-
             if (i < (int)(amountTiles * amountDarkTiles))
             {
                 // First set the Tile on given Position and increase i
                 Rows[posY].Columns[posX].TileID = darkTiles[rnd.Next() % darkTiles.Count];
+                i++;
 
                 // Next "infect" the surounding tiles
                 int infectedTiles = rnd.Next() % 9;
@@ -184,7 +182,7 @@ namespace SurvivalGame
                     for (int j = 0; j < infectedTiles; j++)
                     {
                         // Infect a new one
-                        setDarkTiles((int)MathHelper.Clamp(posX + (rnd.Next() % 3) - 1, 0, MapWidth - 1),
+                        i = setDarkTiles((int)MathHelper.Clamp(posX + (rnd.Next() % 3) - 1, 0, MapWidth - 1),
                             (int)MathHelper.Clamp(posY + (rnd.Next() % 3) - 1, 0, MapWidth - 1), i);
                         alreadyInfected++;
                     }
