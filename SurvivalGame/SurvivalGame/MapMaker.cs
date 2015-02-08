@@ -145,7 +145,7 @@ namespace SurvivalGame
                 MapRow thisRow = new MapRow();
                 for (int x = 0; x < MapWidth; x++)
                 {
-                    thisRow.Columns.Add(new MapCell(lightTiles[rnd.Next() % 2]));
+                    thisRow.Columns.Add(new MapCell(lightTiles[rnd.Next() % lightTiles.Count]));
                 }
                 Rows.Add(thisRow);
             }
@@ -159,7 +159,7 @@ namespace SurvivalGame
         private int setDarkTiles(int posX, int posY, int i)
         {
             // First set the Tile on given Position and increase i
-            Rows[posY].Columns[posX].TileID = darkTiles[rnd.Next() % 2];
+            Rows[posY].Columns[posX].TileID = darkTiles[rnd.Next() % darkTiles.Count];
             i++;
 
             if (i < (int)(amountTiles * amountDarkTiles))
