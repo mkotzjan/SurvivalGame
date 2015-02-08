@@ -158,12 +158,14 @@ namespace SurvivalGame
 
         private int setDarkTiles(int posX, int posY, int i)
         {
-            // First set the Tile on given Position and increase i
-            Rows[posY].Columns[posX].TileID = darkTiles[rnd.Next() % darkTiles.Count];
+            
             i++;
 
             if (i < (int)(amountTiles * amountDarkTiles))
             {
+                // First set the Tile on given Position and increase i
+                Rows[posY].Columns[posX].TileID = darkTiles[rnd.Next() % darkTiles.Count];
+
                 // Next "infect" the surounding tiles
                 int infectedTiles = rnd.Next() % 9;
                 i += infectedTiles;
