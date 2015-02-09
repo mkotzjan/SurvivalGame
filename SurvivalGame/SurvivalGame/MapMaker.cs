@@ -150,13 +150,15 @@ namespace SurvivalGame
             }
 
             byte[,] darkTilesPosition = generateHeightMap();
+            // Convert the heightMap to position of the darker tiles
+            convertHeightToTiles(darkTilesPosition);
         }
 
         private byte[,] generateHeightMap()
         {
             byte[,] heightMap = new byte[MapWidth, MapHeight];
 
-            double percentage = rnd.Next(100, 500)/2000;
+            double percentage = (double)rnd.Next(100, 500)/(double)2000;
             // Add random height to some cells
             for (int i = 0; i < (int)(amountTiles * percentage); i++)
             {
@@ -273,6 +275,20 @@ namespace SurvivalGame
         private bool ContainsCoordinate(byte[,] doubleArray, int x, int y)
         {
             return x >= 0 && x < doubleArray.GetLength(0) && y >= 0 && y < doubleArray.GetLength(1);
+        }
+
+        private void convertHeightToTiles(byte[,] heightMap)
+        {
+            for (int i = 0; i < MapHeight; i++)
+            {
+                for (int j = 0; j < MapWidth; j++)
+                {
+                    if (heightMap[j, i] >= (byte)10)
+	                {
+                        Rows[i].Columns[j].TileID = groundTilesSecond[rnd.Next() % groundTilesSecond.Count];
+	                }
+                }
+            }
         }
 
         public Point WorldToMapCell(Point worldPoint, out Point localPoint)
