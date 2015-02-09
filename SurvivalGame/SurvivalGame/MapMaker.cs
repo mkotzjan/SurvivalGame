@@ -142,6 +142,7 @@ namespace SurvivalGame
             byte[,] tilesPosition = generateHeightMap();
             // Convert the heightMap to position of the darker tiles
             convertHeightToGroundTiles(tilesPosition);
+            smoothGround();
         }
 
         private byte[,] generateHeightMap()
@@ -285,6 +286,11 @@ namespace SurvivalGame
                 }
                 Rows.Add(thisRow);
             }
+        }
+
+        private void smoothGround()
+        {
+            throw new NotImplementedException();
         }
 
         public Point WorldToMapCell(Point worldPoint, out Point localPoint)
