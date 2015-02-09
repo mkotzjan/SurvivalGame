@@ -151,7 +151,7 @@ namespace SurvivalGame
 
             byte[,] darkTilesPosition = generateHeightMap();
             // Convert the heightMap to position of the darker tiles
-            convertHeightToTiles(darkTilesPosition);
+            convertHeightToDarkTiles(darkTilesPosition);
         }
 
         private byte[,] generateHeightMap()
@@ -277,7 +277,7 @@ namespace SurvivalGame
             return x >= 0 && x < doubleArray.GetLength(0) && y >= 0 && y < doubleArray.GetLength(1);
         }
 
-        private void convertHeightToTiles(byte[,] heightMap)
+        private void convertHeightToDarkTiles(byte[,] heightMap)
         {
             for (int i = 0; i < MapHeight; i++)
             {
