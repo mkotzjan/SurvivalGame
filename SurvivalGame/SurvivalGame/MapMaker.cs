@@ -13,7 +13,7 @@ namespace SurvivalGame
         private Texture2D slopeMaps;
         private int seed;
         private List<int> groundTilesFirst = new List<int>() { 0, 0, 0, 0, 0, 1, 1, 1, 1, 6 };
-        private List<int> groundTilesSecond = new List<int>() { 2, 3, 4, 5 };
+        private List<int> groundTilesSecond = new List<int>() { 2, 2, 2, 3, 3, 3, 4, 5 };
         private int amountTiles;
 
         public List<MapRow> Rows = new List<MapRow>();
@@ -158,7 +158,7 @@ namespace SurvivalGame
         {
             byte[,] heightMap = new byte[MapWidth, MapHeight];
 
-            double percentage = (double)rnd.Next(100, 500)/(double)2000;
+            double percentage = (double)rnd.Next(100, 400)/(double)2000;
             // Add random height to some cells
             for (int i = 0; i < (int)(amountTiles * percentage); i++)
             {
