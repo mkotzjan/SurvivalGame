@@ -139,19 +139,9 @@ namespace SurvivalGame
 
         private void generateGround()
         {
-            for (int y = 0; y < MapHeight; y++)
-            {
-                MapRow thisRow = new MapRow();
-                for (int x = 0; x < MapWidth; x++)
-                {
-                    thisRow.Columns.Add(new MapCell(groundTilesFirst[rnd.Next() % groundTilesFirst.Count]));
-                }
-                Rows.Add(thisRow);
-            }
-
-            byte[,] darkTilesPosition = generateHeightMap();
+            byte[,] tilesPosition = generateHeightMap();
             // Convert the heightMap to position of the darker tiles
-            convertHeightToDarkTiles(darkTilesPosition);
+            convertHeightToGroundTiles(tilesPosition);
         }
 
         private byte[,] generateHeightMap()
@@ -277,17 +267,23 @@ namespace SurvivalGame
             return x >= 0 && x < doubleArray.GetLength(0) && y >= 0 && y < doubleArray.GetLength(1);
         }
 
-        private void convertHeightToDarkTiles(byte[,] heightMap)
+        private void convertHeightToGroundTiles(byte[,] heightMap)
         {
             for (int i = 0; i < MapHeight; i++)
             {
+                MapRow thisRow = new MapRow();
                 for (int j = 0; j < MapWidth; j++)
                 {
                     if (heightMap[j, i] >= (byte)10)
 	                {
-                        Rows[i].Columns[j].TileID = groundTilesSecond[rnd.Next() % groundTilesSecond.Count];
+                        thisRow.Columns.Add(new MapCell(groundTilesSecond[rnd.Next() % groundTilesSecond.Count]));
 	                }
+                    else
+                    {
+                        thisRow.Columns.Add(new MapCell(groundTilesFirst[rnd.Next() % groundTilesFirst.Count]));
+                    }
                 }
+                Rows.Add(thisRow);
             }
         }
 
