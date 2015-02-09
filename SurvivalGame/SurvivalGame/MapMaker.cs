@@ -12,8 +12,8 @@ namespace SurvivalGame
         private Texture2D mouseMap;
         private Texture2D slopeMaps;
         private int seed;
-        private List<int> groundTilesFirst = new List<int>() { 0, 1, 0, 1, 0, 1, 2, 3 };
-        private float amountDarkTiles = 0.4f;
+        private List<int> groundTilesFirst = new List<int>() { 0, 0, 0, 0, 0, 1, 1, 1, 1, 6 };
+        private List<int> groundTilesSecond = new List<int>() { 2, 3, 4, 5 };
         private int amountTiles;
 
         public List<MapRow> Rows = new List<MapRow>();
@@ -148,6 +148,29 @@ namespace SurvivalGame
                 }
                 Rows.Add(thisRow);
             }
+
+            byte[,] darkTilesPosition = generateHeightMap();
+        }
+
+        private byte[,] generateHeightMap()
+        {
+            byte[,] heightMap = new byte[MapWidth, MapHeight];
+
+            double percentage = rnd.Next(100, 500)/2000;
+            // Add random height to some cells
+            for (int i = 0; i < (int)(amountTiles * percentage); i++)
+            {
+                heightMap[rnd.Next(MapWidth), rnd.Next(MapHeight)] = (byte)rnd.Next(255);
+            }
+
+            heightMap = smoothHeightMap(heightMap, rnd.Next(2, 5));
+
+            return heightMap;
+        }
+
+        private byte[,] smoothHeightMap(byte[,] map, int amount)
+        {
+
         }
 
         public Point WorldToMapCell(Point worldPoint, out Point localPoint)
