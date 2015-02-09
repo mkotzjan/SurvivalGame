@@ -290,7 +290,31 @@ namespace SurvivalGame
 
         private void smoothGround()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < MapHeight; i++)
+            {
+                for (int j = 0; j < MapWidth; j++)
+                {
+                    if (insideMap(j, i))
+                    {
+                        // TODO!
+                    }
+                }
+            }
+        }
+
+        private bool insideMap(int x, int y)
+        {
+            for (int i = -1; i < 2; i++)
+            {
+                for (int j = -1; j < 2; j++)
+                {
+                    if (!(x + i > 0 && y + j > 0 && x + i < MapWidth && y + j < MapHeight))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         public Point WorldToMapCell(Point worldPoint, out Point localPoint)
