@@ -168,9 +168,111 @@ namespace SurvivalGame
             return heightMap;
         }
 
-        private byte[,] smoothHeightMap(byte[,] map, int amount)
+        private byte[,] smoothHeightMap(byte[,] map, int iterations)
         {
+            for (int i = 0; i < iterations; i++)
+            {
+                // Copy the map to fill in the smooth version
+                byte[,] destinationMap = (byte[,])map.Clone();
 
+                foreach (Point position in GetAllPositions(map))
+                {
+                    SmoothTile(map, destinationMap, position.X, position.Y);
+                }
+
+                //get reference to the smoothed map
+                map = destinationMap;
+            }
+            return map;
+        }
+
+        private List<Point> GetAllPositions(byte[,] doubleArray)
+        {
+            int width = doubleArray.GetLength(0);
+            int height = doubleArray.GetLength(1);
+
+            List<Point> listOfPoints = new List<Point>();
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    listOfPoints.Add(new Point(x, y));
+                }
+            }
+            return listOfPoints;
+        }
+
+        private void SmoothTile(byte[,] sourceMap, byte[,] destinationMap, int x, int y)
+        {
+            //for calculating the average value of neighbors of a tile:
+            float tileSum = 0;              //the sum of the height of the neighbors
+            float numberOfNeighbors = 0;    //the number of neighbors for this tile
+
+            //get the neigbors and go through them
+            foreach (var neighbor in GetNeighborContents(sourceMap, x, y))
+            {
+                numberOfNeighbors++;                        //increase the number of neighbors found
+                tileSum += neighbor;                        //and store the new sum of heights
+            }
+
+            //calculate the average of all neighbors
+            float averageForNeighbors = tileSum / numberOfNeighbors;
+
+            //find out what the difference between this tile and the neighbor average is
+            float difference = averageForNeighbors - sourceMap[x, y];
+            //introduce a little randomness
+            float randomPct = Math.Abs(difference * .1f) * (rnd.Next(6) - 2);
+            //use a fifth of the difference to raise/lower + the randomness
+            destinationMap[x, y] = (byte)MathHelper.Clamp((sourceMap[x, y] + difference * .2f + randomPct), 0, 255);
+        }
+
+        private List<Byte> GetNeighborContents(byte[,] doubleArray, int x, int y, bool onlyXYaxis = false)
+        {
+            List<Byte> neighborContent = new List<Byte>();
+            foreach (var position in GetNeighborCoordinates(doubleArray, x, y, onlyXYaxis))
+            {
+                neighborContent.Add(doubleArray[position.X, position.Y]);
+            }
+            return neighborContent;
+        }
+
+        private List<Point> GetNeighborCoordinates(byte[,] doubleArray, int x, int y, bool onlyXYaxis = false)
+        {
+            List<Point> neighborCoordinates = new List<Point>();
+
+            //for the column on the left to the column on the right of the tile
+            for (int deltaX = -1; deltaX <= 1; deltaX++)
+            {
+
+                //for the row above to the row below the tile
+                for (int deltaY = -1; deltaY <= 1; deltaY++)
+                {
+                    //if we are only looking at the cells directly above/below and beside the cell
+                    //we skip diagonal neighbors
+                    if (onlyXYaxis && deltaY * deltaX != 0) { continue; }
+
+                    //the potential neighbor's coordinates
+                    int neighborX = x + deltaX;
+                    int neighborY = y + deltaY;
+
+                    //if the coordinate is within the map
+                    if (ContainsCoordinate(doubleArray, neighborX, neighborY))
+                    {
+                        //and we aren't looking at the tile itself
+                        if (!(x == neighborX && y == neighborY))
+                        {
+                            neighborCoordinates.Add(new Point(neighborX, neighborY));
+                        }
+                    }
+                }
+            }
+            return neighborCoordinates;
+        }
+
+        private bool ContainsCoordinate(byte[,] doubleArray, int x, int y)
+        {
+            return x >= 0 && x < doubleArray.GetLength(0) && y >= 0 && y < doubleArray.GetLength(1);
         }
 
         public Point WorldToMapCell(Point worldPoint, out Point localPoint)
