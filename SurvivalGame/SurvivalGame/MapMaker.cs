@@ -12,8 +12,7 @@ namespace SurvivalGame
         private Texture2D mouseMap;
         private Texture2D slopeMaps;
         private int seed;
-        private List<int> lightTiles = new List<int>() { 0, 1 };
-        private List<int> darkTiles = new List<int>() { 2, 3 };
+        private List<int> groundTilesFirst = new List<int>() { 0, 1, 0, 1, 0, 1, 2, 3 };
         private float amountDarkTiles = 0.4f;
         private int amountTiles;
 
@@ -145,62 +144,10 @@ namespace SurvivalGame
                 MapRow thisRow = new MapRow();
                 for (int x = 0; x < MapWidth; x++)
                 {
-                    thisRow.Columns.Add(new MapCell(lightTiles[rnd.Next() % lightTiles.Count]));
+                    thisRow.Columns.Add(new MapCell(groundTilesFirst[rnd.Next() % groundTilesFirst.Count]));
                 }
                 Rows.Add(thisRow);
             }
-
-            for (int i = 0; i < (int)(amountTiles * amountDarkTiles); i++)
-            {
-                i = setDarkTiles(rnd.Next() % MapWidth, rnd.Next() % MapHeight, i);
-            }
-        }
-
-        private int setDarkTiles(int posX, int posY, int i)
-        {
-            if (i < (int)(amountTiles * amountDarkTiles))
-            {
-                // First set the Tile on given Position and increase i
-                Rows[posY].Columns[posX].TileID = darkTiles[rnd.Next() % darkTiles.Count];
-                i++;
-
-                // Next "infect" the surounding tiles
-                int infectedTiles = rnd.Next() % 9;
-                i += infectedTiles;
-
-                // Return if there are no tiles to infect
-                if (infectedTiles == 0)
-                {
-                    return i;
-                }
-
-                int alreadyInfected = 0;
-
-                if (infectedTiles < 5)
-                {
-                    // Add max 4 
-                    for (int j = 0; j < infectedTiles; j++)
-                    {
-                        // Infect a new one
-                        int x = rnd.Next() % 3;
-                        int y = rnd.Next() % 3;
-                        if (darkTiles.Contains(Rows[(int)MathHelper.Clamp(posY + y - 1, 0, MapHeight - 1)].Columns[(int)MathHelper.Clamp(posX + x - 1, 0, MapWidth - 1)].TileID))
-                        {
-                            j--;
-                            continue;
-                        }
-                        i = setDarkTiles((int)MathHelper.Clamp(posX + x - 1, 0, MapWidth - 1),
-                            (int)MathHelper.Clamp(posY + y - 1, 0, MapHeight - 1), i);
-                        alreadyInfected++;
-                    }
-                }
-                else
-                {
-
-                }
-            }
-            
-            return i;
         }
 
         public Point WorldToMapCell(Point worldPoint, out Point localPoint)
