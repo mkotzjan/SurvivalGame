@@ -26,8 +26,8 @@ namespace SurvivalGame
         {
             Tile.TileSetTexture = content.Load<Texture2D>(@"Textures\TileSets\tileset");
             pericles6 = content.Load<SpriteFont>(@"Fonts\Pericles6");
-            hilight = content.Load<Texture2D>(@"Textures\TileSets\hilight");
-            myMap = new MapMaker(content.Load<Texture2D>(@"Textures\TileSets\mousemap"),
+            this.hilight = content.Load<Texture2D>(@"Textures\TileSets\hilight");
+            this.myMap = new MapMaker(content.Load<Texture2D>(@"Textures\TileSets\mousemap"),
                 content.Load<Texture2D>(@"Textures\TileSets\slopemaps"));
         }
 
@@ -42,11 +42,11 @@ namespace SurvivalGame
             int offsetX = (int)squareOffset.X;
             int offsetY = (int)squareOffset.Y;
 
-            float maxdepth = ((myMap.MapWidth + 1) + ((myMap.MapHeight + 1) * Tile.TileWidth)) * 10;
+            float maxdepth = ((this.myMap.MapWidth + 1) + ((this.myMap.MapHeight + 1) * Tile.TileWidth)) * 10;
             float depthOffset;
 
-            Point vladMapPoint = myMap.WorldToMapCell(new Point((int)Program.game.play.character.vlad.Position.X, (int)Program.game.play.character.vlad.Position.Y));
-            Point vlad2MapPoint = myMap.WorldToMapCell(new Point((int)Program.game.play.enemy.vlad2.Position.X, (int)Program.game.play.enemy.vlad2.Position.Y));
+            Point vladMapPoint = this.myMap.WorldToMapCell(new Point((int)Program.game.play.character.vlad.Position.X, (int)Program.game.play.character.vlad.Position.Y));
+            Point vlad2MapPoint = this.myMap.WorldToMapCell(new Point((int)Program.game.play.enemy.vlad2.Position.X, (int)Program.game.play.enemy.vlad2.Position.Y));
 
             for (int y = 0; y < squaresDown; y++)
             {
@@ -141,7 +141,7 @@ namespace SurvivalGame
                 hilightrowOffset = Tile.OddRowXOffset;
 
             spriteBatch.Draw(
-                            hilight,
+                            this.hilight,
                             Camera.WorldToScreen(
 
                                 new Vector2(
