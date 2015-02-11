@@ -20,7 +20,7 @@ namespace SurvivalGame
         private Texture2D hilight;
 
         SpriteFont pericles6;
-        private bool DebugOverlay = false;
+        private bool DebugOverlay = true;
 
         public void LoadContent(ContentManager content)
         {
@@ -93,7 +93,7 @@ namespace SurvivalGame
                             Vector2.Zero,
                             1.0f,
                             SpriteEffects.None,
-                            depthOffset - ((float)heightRow * heightRowDepthMod));
+                            depthOffset - ((float)heightRow * this.heightRowDepthMod));
                         heightRow++;
                     }
 
@@ -109,7 +109,7 @@ namespace SurvivalGame
                             Vector2.Zero,
                             1.0f,
                             SpriteEffects.None,
-                            depthOffset - ((float)heightRow * heightRowDepthMod));
+                            depthOffset - ((float)heightRow * this.heightRowDepthMod));
                     }
 
                     if ((mapx == vladMapPoint.X) && (mapy == vladMapPoint.Y))
@@ -123,11 +123,11 @@ namespace SurvivalGame
                         Program.game.play.enemy.vlad2.DrawDepth = depthOffset - (float)(heightRow + 2) * heightRowDepthMod;
                     }
 
-                    if (DebugOverlay)
+                    if (this.DebugOverlay)
                     {
                         spriteBatch.DrawString(pericles6, (x + firstX).ToString() + ", " + (y + firstY).ToString(),
-                            new Vector2((x * Tile.TileStepX) - offsetX + rowOffset + baseOffsetX + 24,
-                                (y * Tile.TileStepY) - offsetY + baseOffsetY + 48), Color.White, 0f, Vector2.Zero,
+                            new Vector2((x * Tile.TileStepX) - offsetX + rowOffset + this.baseOffsetX + 24,
+                                (y * Tile.TileStepY) - offsetY + this.baseOffsetY + 48), Color.White, 0f, Vector2.Zero,
                                 1.0f, SpriteEffects.None, 0.0f);
                     }
                 }
