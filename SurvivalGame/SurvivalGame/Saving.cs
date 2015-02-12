@@ -9,6 +9,11 @@ namespace SurvivalGame
     {
         public static void Save()
         {
+            saveCurrentGame();
+        }
+
+        private static void saveCurrentGame()
+        {
 
         }
     }
