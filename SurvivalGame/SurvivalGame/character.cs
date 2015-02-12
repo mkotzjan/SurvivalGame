@@ -105,13 +105,13 @@ namespace SurvivalGame
                 moveVector += new Vector2(0, 1);
             }
 
-            if (Program.game.play.mapReader.myMap.GetCellAtWorldPoint(this.vlad.Position + moveDir).Walkable == false)
+            if (Program.game.play.mapReader.MyMap.GetCellAtWorldPoint(this.vlad.Position + moveDir).Walkable == false)
             {
                 moveDir = Vector2.Zero;
             }
 
-            if (Math.Abs(Program.game.play.mapReader.myMap.GetOverallHeight(this.vlad.Position)
-                - Program.game.play.mapReader.myMap.GetOverallHeight(this.vlad.Position + moveDir)) > 10)
+            if (Math.Abs(Program.game.play.mapReader.MyMap.GetOverallHeight(this.vlad.Position)
+                - Program.game.play.mapReader.MyMap.GetOverallHeight(this.vlad.Position + moveDir)) > 10)
             {
                 moveDir = Vector2.Zero;
             }
@@ -139,7 +139,7 @@ namespace SurvivalGame
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            vlad.Draw(spriteBatch, 0, -Program.game.play.mapReader.myMap.GetOverallHeight(vlad.Position));
+            vlad.Draw(spriteBatch, 0, -Program.game.play.mapReader.MyMap.GetOverallHeight(vlad.Position));
         }
     }
 }

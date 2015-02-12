@@ -11,9 +11,9 @@
 
     public class MapDrawer
     {
-        public MapMaker myMap;
-        public int squaresAcross = 17;
-        public int squaresDown = 37;
+        public MapMaker MyMap;
+        public int SquaresAcross = 17;
+        public int SquaresDown = 37;
         public int BaseOffsetX = -32;
         public int BaseOffsetY = -64;
         float heightRowDepthMod = 0.00001f;
@@ -27,7 +27,7 @@
             Tile.TileSetTexture = content.Load<Texture2D>(@"Textures\TileSets\tileset");
             this.pericles6 = content.Load<SpriteFont>(@"Fonts\Pericles6");
             this.hilight = content.Load<Texture2D>(@"Textures\TileSets\hilight");
-            this.myMap = new MapMaker(content.Load<Texture2D>(@"Textures\TileSets\mousemap"),
+            this.MyMap = new MapMaker(content.Load<Texture2D>(@"Textures\TileSets\mousemap"),
                 content.Load<Texture2D>(@"Textures\TileSets\slopemaps"));
         }
 
@@ -42,28 +42,28 @@
             int offsetX = (int)squareOffset.X;
             int offsetY = (int)squareOffset.Y;
 
-            float maxdepth = ((this.myMap.MapWidth + 1) + ((this.myMap.MapHeight + 1) * Tile.TileWidth)) * 10;
+            float maxdepth = ((this.MyMap.MapWidth + 1) + ((this.MyMap.MapHeight + 1) * Tile.TileWidth)) * 10;
             float depthOffset;
 
-            Point vladMapPoint = this.myMap.WorldToMapCell(new Point((int)Program.game.play.character.vlad.Position.X, (int)Program.game.play.character.vlad.Position.Y));
-            Point vlad2MapPoint = this.myMap.WorldToMapCell(new Point((int)Program.game.play.enemy.vlad2.Position.X, (int)Program.game.play.enemy.vlad2.Position.Y));
+            Point vladMapPoint = this.MyMap.WorldToMapCell(new Point((int)Program.game.play.character.vlad.Position.X, (int)Program.game.play.character.vlad.Position.Y));
+            Point vlad2MapPoint = this.MyMap.WorldToMapCell(new Point((int)Program.game.play.enemy.vlad2.Position.X, (int)Program.game.play.enemy.vlad2.Position.Y));
 
-            for (int y = 0; y < this.squaresDown; y++)
+            for (int y = 0; y < this.SquaresDown; y++)
             {
                 int rowOffset = 0;
                 if ((firstY + y) % 2 == 1)
                     rowOffset = Tile.OddRowXOffset;
 
-                for (int x = 0; x < this.squaresAcross; x++)
+                for (int x = 0; x < this.SquaresAcross; x++)
                 {
                     int mapx = (firstX + x);
                     int mapy = (firstY + y);
                     depthOffset = 0.7f - ((mapx + (mapy * Tile.TileWidth)) / maxdepth);
 
-                    if ((mapx >= this.myMap.MapWidth) || (mapy >= this.myMap.MapHeight))
+                    if ((mapx >= this.MyMap.MapWidth) || (mapy >= this.MyMap.MapHeight))
                         continue;
 
-                    foreach (int tileID in this.myMap.Rows[mapy].Columns[mapx].BaseTiles)
+                    foreach (int tileID in this.MyMap.Rows[mapy].Columns[mapx].BaseTiles)
                     {
                         spriteBatch.Draw(
                             Tile.TileSetTexture,
@@ -79,7 +79,7 @@
                     }
                     int heightRow = 0;
 
-                    foreach (int tileID in this.myMap.Rows[mapy].Columns[mapx].HeightTiles)
+                    foreach (int tileID in this.MyMap.Rows[mapy].Columns[mapx].HeightTiles)
                     {
                         spriteBatch.Draw(
                             Tile.TileSetTexture,
@@ -97,7 +97,7 @@
                         heightRow++;
                     }
 
-                    foreach (int tileID in this.myMap.Rows[y + firstY].Columns[x + firstX].TopperTiles)
+                    foreach (int tileID in this.MyMap.Rows[y + firstY].Columns[x + firstX].TopperTiles)
                     {
                         spriteBatch.Draw(
                             Tile.TileSetTexture,
@@ -134,7 +134,7 @@
             }
 
             Vector2 hilightLoc = Camera.ScreenToWorld(new Vector2(Mouse.GetState().X, Mouse.GetState().Y));
-            Point hilightPoint = this.myMap.WorldToMapCell(new Point((int)hilightLoc.X, (int)hilightLoc.Y));
+            Point hilightPoint = this.MyMap.WorldToMapCell(new Point((int)hilightLoc.X, (int)hilightLoc.Y));
 
             int hilightrowOffset = 0;
             if ((hilightPoint.Y) % 2 == 1)
