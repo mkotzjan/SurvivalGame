@@ -34,7 +34,7 @@ namespace SurvivalGame
             Camera.ViewHeight = Program.game.graphics.PreferredBackBufferHeight;
             Camera.WorldWidth = ((mapReader.myMap.MapWidth - 2) * Tile.TileStepX);
             Camera.WorldHeight = ((mapReader.myMap.MapHeight - 2) * Tile.TileStepY);
-            Camera.DisplayOffset = new Vector2(mapReader.baseOffsetX, mapReader.baseOffsetY);
+            Camera.DisplayOffset = new Vector2(mapReader.BaseOffsetX, mapReader.BaseOffsetY);
         }
 
         public void Update(GameTime gameTime)

@@ -128,9 +128,9 @@ namespace SurvivalGame
             }
 
             float vladX = MathHelper.Clamp(
-                this.vlad.Position.X, 0 - this.vlad.DrawOffset.X - Program.game.play.mapReader.baseOffsetX, Camera.WorldWidth);
+                this.vlad.Position.X, 0 - this.vlad.DrawOffset.X - Program.game.play.mapReader.BaseOffsetX, Camera.WorldWidth);
             float vladY = MathHelper.Clamp(
-                this.vlad.Position.Y, 0 - this.vlad.DrawOffset.Y - Program.game.play.mapReader.baseOffsetY, Camera.WorldHeight);
+                this.vlad.Position.Y, 0 - this.vlad.DrawOffset.Y - Program.game.play.mapReader.BaseOffsetY, Camera.WorldHeight);
 
             this.vlad.Position = new Vector2(vladX, vladY);
 

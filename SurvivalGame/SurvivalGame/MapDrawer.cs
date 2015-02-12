@@ -1,26 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-
-namespace SurvivalGame
+﻿namespace SurvivalGame
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Input;
+
     public class MapDrawer
     {
         public MapMaker myMap;
         public int squaresAcross = 17;
         public int squaresDown = 37;
-        public int baseOffsetX = -32;
-        public int baseOffsetY = -64;
+        public int BaseOffsetX = -32;
+        public int BaseOffsetY = -64;
         float heightRowDepthMod = 0.00001f;
         private Texture2D hilight;
 
         SpriteFont pericles6;
-        private bool DebugOverlay = true;
+        private bool debugOverlay = true;
 
         public void LoadContent(ContentManager content)
         {
@@ -123,11 +123,11 @@ namespace SurvivalGame
                         Program.game.play.enemy.vlad2.DrawDepth = depthOffset - (float)(heightRow + 2) * this.heightRowDepthMod;
                     }
 
-                    if (this.DebugOverlay)
+                    if (this.debugOverlay)
                     {
                         spriteBatch.DrawString(this.pericles6, (x + firstX).ToString() + ", " + (y + firstY).ToString(),
-                            new Vector2((x * Tile.TileStepX) - offsetX + rowOffset + this.baseOffsetX + 24,
-                                (y * Tile.TileStepY) - offsetY + this.baseOffsetY + 48), Color.White, 0f, Vector2.Zero,
+                            new Vector2((x * Tile.TileStepX) - offsetX + rowOffset + this.BaseOffsetX + 24,
+                                (y * Tile.TileStepY) - offsetY + this.BaseOffsetY + 48), Color.White, 0f, Vector2.Zero,
                                 1.0f, SpriteEffects.None, 0.0f);
                     }
                 }
