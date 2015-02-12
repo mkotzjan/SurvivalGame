@@ -7,6 +7,9 @@ namespace SurvivalGame
 {
     static class Saving
     {
+        public static void Save()
+        {
 
+        }
     }
 }
