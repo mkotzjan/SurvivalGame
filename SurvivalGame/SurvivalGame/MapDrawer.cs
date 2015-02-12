@@ -74,13 +74,9 @@
                             Camera.WorldToScreen(
                                 new Vector2((mapx * Tile.TileStepX) + rowOffset, mapy * Tile.TileStepY)),
                             Tile.GetSourceRectangle(tileID),
-                            Color.White,
-                            0.0f,
-                            Vector2.Zero,
-                            1.0f,
-                            SpriteEffects.None,
-                            1.0f);
+                            Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 1.0f);
                     }
+
                     int heightRow = 0;
 
                     foreach (int tileID in this.MyMap.Rows[mapy].Columns[mapx].HeightTiles)
