@@ -42,8 +42,8 @@ namespace SurvivalGame
         /// 
         public int FrameCount
         {
-            get { return iFrameCount; }
-            set { iFrameCount = value; }
+            get { return this.iFrameCount; }
+            set { this.iFrameCount = value; }
         }
 
         /// 
@@ -51,8 +51,8 @@ namespace SurvivalGame
         /// 
         public float FrameLength
         {
-            get { return fFrameLength; }
-            set { fFrameLength = value; }
+            get { return this.fFrameLength; }
+            set { this.fFrameLength = value; }
         }
 
         /// 
@@ -60,8 +60,8 @@ namespace SurvivalGame
         /// 
         public int CurrentFrame
         {
-            get { return iCurrentFrame; }
-            set { iCurrentFrame = (int)MathHelper.Clamp(value, 0, iFrameCount - 1); }
+            get { return this.iCurrentFrame; }
+            set { this.iCurrentFrame = (int)MathHelper.Clamp(value, 0, this.iFrameCount - 1); }
         }
 
         public int FrameWidth
@@ -83,15 +83,15 @@ namespace SurvivalGame
             get
             {
                 return new Rectangle(
-                    rectInitialFrame.X + (rectInitialFrame.Width * iCurrentFrame),
-                    rectInitialFrame.Y, rectInitialFrame.Width, rectInitialFrame.Height);
+                    this.rectInitialFrame.X + (this.rectInitialFrame.Width * this.iCurrentFrame),
+                    this.rectInitialFrame.Y, this.rectInitialFrame.Width, this.rectInitialFrame.Height);
             }
         }
 
         public int PlayCount
         {
-            get { return iPlayCount; }
-            set { iPlayCount = value; }
+            get { return this.iPlayCount; }
+            set { this.iPlayCount = value; }
         }
 
         public string NextAnimation
@@ -102,43 +102,43 @@ namespace SurvivalGame
 
         public FrameAnimation(Rectangle FirstFrame, int Frames)
         {
-            rectInitialFrame = FirstFrame;
-            iFrameCount = Frames;
+            this.rectInitialFrame = FirstFrame;
+            this.iFrameCount = Frames;
         }
 
         public FrameAnimation(int X, int Y, int Width, int Height, int Frames)
         {
             rectInitialFrame = new Rectangle(X, Y, Width, Height);
-            iFrameCount = Frames;
+            this.iFrameCount = Frames;
         }
 
         public FrameAnimation(int X, int Y, int Width, int Height, int Frames, float FrameLength)
         {
-            rectInitialFrame = new Rectangle(X, Y, Width, Height);
-            iFrameCount = Frames;
-            fFrameLength = FrameLength;
+            this.rectInitialFrame = new Rectangle(X, Y, Width, Height);
+            this.iFrameCount = Frames;
+            this.fFrameLength = FrameLength;
         }
 
         public FrameAnimation(int X, int Y,
             int Width, int Height, int Frames,
             float FrameLength, string strNextAnimation)
         {
-            rectInitialFrame = new Rectangle(X, Y, Width, Height);
-            iFrameCount = Frames;
-            fFrameLength = FrameLength;
-            sNextAnimation = strNextAnimation;
+            this.rectInitialFrame = new Rectangle(X, Y, Width, Height);
+            this.iFrameCount = Frames;
+            this.fFrameLength = FrameLength;
+            this.sNextAnimation = strNextAnimation;
         }
 
         public void Update(GameTime gameTime)
         {
-            fFrameTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            this.fFrameTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (fFrameTimer > fFrameLength)
+            if (this.fFrameTimer > this.fFrameLength)
             {
-                fFrameTimer = 0.0f;
-                iCurrentFrame = (iCurrentFrame + 1) % iFrameCount;
-                if (iCurrentFrame == 0)
-                    iPlayCount = (int)MathHelper.Min(iPlayCount + 1, int.MaxValue);
+                this.fFrameTimer = 0.0f;
+                this.iCurrentFrame = (this.iCurrentFrame + 1) % this.iFrameCount;
+                if (this.iCurrentFrame == 0)
+                    this.iPlayCount = (int)MathHelper.Min(this.iPlayCount + 1, int.MaxValue);
             }
         }
 

@@ -61,13 +61,13 @@ namespace SurvivalGame
 
         public SpriteAnimation Sprite
         {
-            get { return asSprite; }
+            get { return this.asSprite; }
         }
 
         public Vector2 Position
         {
-            get { return asSprite.Position; }
-            set { asSprite.Position = value; }
+            get { return this.asSprite.Position; }
+            set { this.asSprite.Position = value; }
         }
 
         public Vector2 Target
@@ -78,79 +78,79 @@ namespace SurvivalGame
 
         public int HorizontalCollisionBuffer
         {
-            get { return iCollisionBufferX; }
-            set { iCollisionBufferX = value; }
+            get { return this.iCollisionBufferX; }
+            set { this.iCollisionBufferX = value; }
         }
 
         public int VerticalCollisionBuffer
         {
-            get { return iCollisionBufferY; }
-            set { iCollisionBufferY = value; }
+            get { return this.iCollisionBufferY; }
+            set { this.iCollisionBufferY = value; }
         }
 
         public bool IsPathing
         {
-            get { return bPathing; }
-            set { bPathing = value; }
+            get { return this.bPathing; }
+            set { this.bPathing = value; }
         }
 
         public bool DeactivateAfterPathing
         {
-            get { return bDeactivateAtEndOfPath; }
-            set { bDeactivateAtEndOfPath = value; }
+            get { return this.bDeactivateAtEndOfPath; }
+            set { this.bDeactivateAtEndOfPath = value; }
         }
 
         public bool LoopPath
         {
-            get { return bLoopPath; }
-            set { bLoopPath = value; }
+            get { return this.bLoopPath; }
+            set { this.bLoopPath = value; }
         }
 
         public string EndPathAnimation
         {
-            get { return sEndPathAnimation; }
-            set { sEndPathAnimation = value; }
+            get { return this.sEndPathAnimation; }
+            set { this.sEndPathAnimation = value; }
         }
 
         public bool HideAtEndOfPath
         {
-            get { return bHideAtEndOfPath; }
-            set { bHideAtEndOfPath = value; }
+            get { return this.bHideAtEndOfPath; }
+            set { this.bHideAtEndOfPath = value; }
         }
 
         public bool IsVisible
         {
-            get { return bVisible; }
-            set { bVisible = value; }
+            get { return this.bVisible; }
+            set { this.bVisible = value; }
         }
 
         public float Speed
         {
-            get { return fSpeed; }
-            set { fSpeed = value; }
+            get { return this.fSpeed; }
+            set { this.fSpeed = value; }
         }
 
         public bool IsActive
         {
-            get { return bActive; }
-            set { bActive = value; }
+            get { return this.bActive; }
+            set { this.bActive = value; }
         }
 
         public bool IsMoving
         {
-            get { return bMovingTowardsTarget; }
-            set { bMovingTowardsTarget = value; }
+            get { return this.bMovingTowardsTarget; }
+            set { this.bMovingTowardsTarget = value; }
         }
 
         public bool IsCollidable
         {
-            get { return bCollidable; }
-            set { bCollidable = value; }
+            get { return this.bCollidable; }
+            set { this.bCollidable = value; }
         }
 
         public Rectangle BoundingBox
         {
-            get { return asSprite.BoundingBox; }
+            get { return this.asSprite.BoundingBox; }
         }
 
         public Rectangle CollisionBox
@@ -158,16 +158,16 @@ namespace SurvivalGame
             get
             {
                 return new Rectangle(
-                    asSprite.BoundingBox.X + iCollisionBufferX,
-                    asSprite.BoundingBox.Y + iCollisionBufferY,
-                    asSprite.Width - (2 * iCollisionBufferX),
-                    asSprite.Height - (2 * iCollisionBufferY));
+                    this.asSprite.BoundingBox.X + this.iCollisionBufferX,
+                    this.asSprite.BoundingBox.Y + this.iCollisionBufferY,
+                    this.asSprite.Width - (2 * this.iCollisionBufferX),
+                    this.asSprite.Height - (2 * this.iCollisionBufferY));
             }
         }
 
         public MobileSprite(Texture2D texture)
         {
-            asSprite = new SpriteAnimation(texture);
+            this.asSprite = new SpriteAnimation(texture);
         }
 
         public void AddPathNode(Vector2 node)
@@ -187,13 +187,13 @@ namespace SurvivalGame
 
         public void Update(GameTime gameTime)
         {
-            if (bActive && bMovingTowardsTarget)
+            if (this.bActive && this.bMovingTowardsTarget)
             {
                 if (!(v2Target == null))
                 {
                     // Get a vector pointing from the current location of the sprite
                     // to the destination.
-                    Vector2 Delta = new Vector2(v2Target.X - asSprite.X, v2Target.Y - asSprite.Y);
+                    Vector2 Delta = new Vector2(v2Target.X - this.asSprite.X, v2Target.Y - this.asSprite.Y);
 
                     if (Delta.Length() > Speed)
                     {
@@ -203,21 +203,21 @@ namespace SurvivalGame
                     }
                     else
                     {
-                        if (v2Target == asSprite.Position)
+                        if (v2Target == this.asSprite.Position)
                         {
-                            if (bPathing)
+                            if (this.bPathing)
                             {
                                 if (queuePath.Count > 0)
                                 {
                                     v2Target = queuePath.Dequeue();
-                                    if (bLoopPath)
+                                    if (this.bLoopPath)
                                     {
                                         queuePath.Enqueue(v2Target);
                                     }
                                 }
                                 else
                                 {
-                                    if (!(sEndPathAnimation == null))
+                                    if (!(this.sEndPathAnimation == null))
                                     {
                                         if (!(Sprite.CurrentAnimation == sEndPathAnimation))
                                         {
@@ -225,34 +225,34 @@ namespace SurvivalGame
                                         }
                                     }
 
-                                    if (bDeactivateAtEndOfPath)
+                                    if (this.bDeactivateAtEndOfPath)
                                     {
-                                        IsActive = false;
+                                        this.IsActive = false;
                                     }
 
-                                    if (bHideAtEndOfPath)
+                                    if (this.bHideAtEndOfPath)
                                     {
-                                        IsVisible = false;
+                                        this.IsVisible = false;
                                     }
                                 }
                             }
                         }
                         else
                         {
-                            asSprite.Position = v2Target;
+                            this.asSprite.Position = v2Target;
                         }
                     }
                 }
             }
-            if (bActive)
-                asSprite.Update(gameTime);
+            if (this.bActive)
+                this.asSprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (bVisible)
+            if (this.bVisible)
             {
-                asSprite.Draw(spriteBatch, 0, 0);
+                this.asSprite.Draw(spriteBatch, 0, 0);
             }
         }
     }

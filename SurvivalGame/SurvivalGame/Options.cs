@@ -53,7 +53,7 @@ namespace SurvivalGame
 
         private void setDebug(bool set)
         {
-            debug = set;
+            this.debug = set;
 
         }
     }

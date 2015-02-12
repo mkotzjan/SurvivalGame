@@ -18,7 +18,7 @@ namespace SurvivalGame
     {
         public GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        public enum GameState {Play, Options, Menu};
+        public enum GameState { Play, Options, Menu };
         public static GameState gameState;
         MenuComponent menu;
         public Play play;

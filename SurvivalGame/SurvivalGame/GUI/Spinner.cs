@@ -29,7 +29,7 @@ namespace SurvivalGame.GUI
         /// <param name="list"></param>
         public Spinner(List<string> list)
         {
-            contentList = list;
+            this.contentList = list;
             quantity = list.Count();
             selected = 0;
         }
@@ -40,16 +40,16 @@ namespace SurvivalGame.GUI
         /// <param name="gametime"></param>
         public void Update(GameTime gametime)
         {
-            keyboard = Keyboard.GetState();
+            this.keyboard = Keyboard.GetState();
 
-            if (CheckKeyboard(Keys.Up))
+            if (this.CheckKeyboard(Keys.Up))
             {
                 if (selected > 0)
                 {
                     selected--;
                 }
             }
-            else if (CheckKeyboard(Keys.Down))
+            else if (this.CheckKeyboard(Keys.Down))
             {
                 if ((int)selected < quantity - 1)
                 {
@@ -57,7 +57,7 @@ namespace SurvivalGame.GUI
                 }
             }
 
-            prevKeyboard = keyboard;
+            this.prevKeyboard = this.keyboard;
         }
 
         public void Draw(SpriteBatch spriteBatch, SpriteFont spriteFont, Vector2 pos, Color normalColor, Color selectedColor)
@@ -66,7 +66,7 @@ namespace SurvivalGame.GUI
             for (int i = selectedFrozen; i < selectedFrozen + quantity; i++)
             {
                 Color color = (i + selected == (int)selected) ? selectedColor : normalColor;
-                spriteBatch.DrawString(spriteFont, contentList[i + selected], new Vector2(pos.X, pos.Y + (20 * i)), color * (1f - (0.28f * Math.Abs(i))));
+                spriteBatch.DrawString(spriteFont, this.contentList[i + selected], new Vector2(pos.X, pos.Y + (20 * i)), color * (1f - (0.28f * Math.Abs(i))));
             }
         }
 
@@ -77,7 +77,7 @@ namespace SurvivalGame.GUI
         /// <returns>true or false</returns>
         public bool CheckKeyboard(Keys key)
         {
-            return (keyboard.IsKeyDown(key) && !prevKeyboard.IsKeyDown(key));
+            return (this.keyboard.IsKeyDown(key) && !this.prevKeyboard.IsKeyDown(key));
         }
     }
 }

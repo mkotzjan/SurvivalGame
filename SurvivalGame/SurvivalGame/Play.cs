@@ -21,45 +21,45 @@ namespace SurvivalGame
 
         public Play()
         {
-            ks = new KeyboardState();
-            ksprev = new KeyboardState();
+            this.ks = new KeyboardState();
+            this.ksprev = new KeyboardState();
         }
 
         public void LoadContent(ContentManager content)
         {
-            mapReader.LoadContent(content);
-            character.LoadContent(content);
-            enemy.LoadContent(content);
+            this.mapReader.LoadContent(content);
+            this.character.LoadContent(content);
+            this.enemy.LoadContent(content);
             Camera.ViewWidth = Program.game.graphics.PreferredBackBufferWidth;
             Camera.ViewHeight = Program.game.graphics.PreferredBackBufferHeight;
-            Camera.WorldWidth = ((mapReader.MyMap.MapWidth - 2) * Tile.TileStepX);
-            Camera.WorldHeight = ((mapReader.MyMap.MapHeight - 2) * Tile.TileStepY);
-            Camera.DisplayOffset = new Vector2(mapReader.BaseOffsetX, mapReader.BaseOffsetY);
+            Camera.WorldWidth = ((this.mapReader.MyMap.MapWidth - 2) * Tile.TileStepX);
+            Camera.WorldHeight = ((this.mapReader.MyMap.MapHeight - 2) * Tile.TileStepY);
+            Camera.DisplayOffset = new Vector2(mapReader.BaseOffsetX, this.mapReader.BaseOffsetY);
         }
 
         public void Update(GameTime gameTime)
         {
-            ks = Keyboard.GetState();
+            this.ks = Keyboard.GetState();
             if (!toggleOverlay)
             {
-                character.Update(gameTime);
-                Camera.Move(Camera.WorldToScreen(new Vector2(character.vlad.Position.X - (Camera.ViewWidth / 2), character.vlad.Position.Y - (Camera.ViewHeight / 2))));
-                enemy.Move(gameTime);
+                this.character.Update(gameTime);
+                Camera.Move(Camera.WorldToScreen(new Vector2(this.character.vlad.Position.X - (Camera.ViewWidth / 2), this.character.vlad.Position.Y - (Camera.ViewHeight / 2))));
+                this.enemy.Move(gameTime);
             }
 
-            if (CheckKeyboardReleased(Keys.Escape))
+            if (this.CheckKeyboardReleased(Keys.Escape))
             {
                 ToggleOverlay();
             }
 
-            ksprev = ks;
+            this.ksprev = this.ks;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            mapReader.Draw(spriteBatch);
-            character.Draw(spriteBatch);
-            enemy.Draw(spriteBatch);
+            this.mapReader.Draw(spriteBatch);
+            this.character.Draw(spriteBatch);
+            this.enemy.Draw(spriteBatch);
             if (toggleOverlay)
             {
                 overlay.Draw(spriteBatch);
@@ -73,12 +73,12 @@ namespace SurvivalGame
 
         private bool CheckKeyboardPressed(Keys key)
         {
-            return (ks.IsKeyDown(key) && !ksprev.IsKeyDown(key));
+            return (this.ks.IsKeyDown(key) && !this.ksprev.IsKeyDown(key));
         }
 
         private bool CheckKeyboardReleased(Keys key)
         {
-            return (ksprev.IsKeyDown(key) && !ks.IsKeyDown(key));
+            return (this.ksprev.IsKeyDown(key) && !this.ks.IsKeyDown(key));
         }
     }
 }

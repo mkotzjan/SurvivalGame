@@ -12,8 +12,8 @@ namespace SurvivalGame.GUI
 
         public Dialog(string text, bool okButton = true)
         {
-            displayedText = text;
-            displayOkButton = okButton;
+            this.displayedText = text;
+            this.displayOkButton = okButton;
         }
 
         public void Draw()

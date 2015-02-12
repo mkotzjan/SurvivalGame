@@ -38,19 +38,19 @@ namespace SurvivalGame
         /// </summary>
         public MenuComponent()
         {
-            buttonList.Add("Play");
-            buttonList.Add("Options");
-            buttonList.Add("Exit");
+            this.buttonList.Add("Play");
+            this.buttonList.Add("Options");
+            this.buttonList.Add("Exit");
 
-            spinnerList.Add("Test1");
-            spinnerList.Add("Test2");
-            spinnerList.Add("Test3");
-            spinnerList.Add("Test4");
-            spinnerList.Add("Test5");
-            spinnerList.Add("Test6");
-            spinnerList.Add("Test7");
-            spinnerList.Add("Test8");
-            spinner = new Spinner(spinnerList);
+            this.spinnerList.Add("Test1");
+            this.spinnerList.Add("Test2");
+            this.spinnerList.Add("Test3");
+            this.spinnerList.Add("Test4");
+            this.spinnerList.Add("Test5");
+            this.spinnerList.Add("Test6");
+            this.spinnerList.Add("Test7");
+            this.spinnerList.Add("Test8");
+            this.spinner = new Spinner(spinnerList);
         }
 
         /// <summary>
@@ -68,25 +68,25 @@ namespace SurvivalGame
         /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
-            keyboard = Keyboard.GetState();
-            mouse = Mouse.GetState();
+            this.keyboard = Keyboard.GetState();
+            this.mouse = Mouse.GetState();
 
-            if (CheckKeyboard(Keys.Up))
+            if (this.CheckKeyboard(Keys.Up))
             {
-                if (selected > 0)
+                if (this.selected > 0)
                 {
                     selected--;
                 }
             }
-            else if (CheckKeyboard(Keys.Down))
+            else if (this.CheckKeyboard(Keys.Down))
             {
-                if ((int)selected < buttonList.Count - 1)
+                if ((int)selected < this.buttonList.Count - 1)
                 {
                     selected++;
                 }
             }
 
-            if (CheckKeyboard(Keys.Enter))
+            if (this.CheckKeyboard(Keys.Enter))
             {
                 if ((int)selected == 2)
                 {
@@ -96,10 +96,10 @@ namespace SurvivalGame
                 
             }
 
-            prevKeyboard = keyboard;
-            prevMouse = mouse;
+            this.prevKeyboard = this.keyboard;
+            this.prevMouse = this.mouse;
 
-            spinner.Update(gameTime);
+            this.spinner.Update(gameTime);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace SurvivalGame
         /// <returns>true or false</returns>
         public bool CheckKeyboard(Keys key)
         {
-            return (keyboard.IsKeyDown(key)  && !prevKeyboard.IsKeyDown(key));
+            return (this.keyboard.IsKeyDown(key)  && !this.prevKeyboard.IsKeyDown(key));
         }
 
         /// <summary>
@@ -138,9 +138,9 @@ namespace SurvivalGame
         private void normalPosition(SpriteBatch spriteBatch)
         {
             int x = 0;
-            for (int i = 0; i < buttonList.Count; i++)
+            for (int i = 0; i < this.buttonList.Count; i++)
             {
-                color = (i == (int)selected) ? new Color(180, 180, 100) : new Color(58, 58, 58);
+                this.color = (i == (int)selected) ? new Color(180, 180, 100) : new Color(58, 58, 58);
                 if (i == (int)selected)
                 {
                     x = 5;
@@ -149,10 +149,10 @@ namespace SurvivalGame
                 {
                     x = 0;
                 }
-                spriteBatch.DrawString(spriteFont, buttonList[i], new Vector2((Game1.screen.Width / 2) -
+                spriteBatch.DrawString(spriteFont, this.buttonList[i], new Vector2((Game1.screen.Width / 2) -
                      +x, ((Game1.screen.Height / 2) -
-                    (spriteFont.LineSpacing * buttonList.Count) / 2) +
-                    (spriteFont.LineSpacing + linePadding * i)), color);
+                    (spriteFont.LineSpacing * this.buttonList.Count) / 2) +
+                    (spriteFont.LineSpacing + this.linePadding * i)), this.color);
                 spinner.Draw(spriteBatch, spriteFont, new Vector2(50, 200), new Color(58, 58, 58), new Color(180, 180, 100));
             }
         }

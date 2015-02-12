@@ -36,10 +36,10 @@ namespace SurvivalGame
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            overlay = new Texture2D(Program.game.graphics.GraphicsDevice, width, height);
-            Color[] data = new Color[width * height];
+            this.overlay = new Texture2D(Program.game.graphics.GraphicsDevice, this.width, this.height);
+            Color[] data = new Color[this.width * this.height];
             for (int i = 0; i < data.Length; ++i) data[i] = Color.Chocolate;
-            overlay.SetData(data);
+            this.overlay.SetData(data);
             spriteBatch.Draw(overlay, new Vector2(0, 0), Color.Black * 0.6f);
         }
     }
