@@ -52,7 +52,9 @@
             {
                 int rowOffset = 0;
                 if ((firstY + y) % 2 == 1)
+                {
                     rowOffset = Tile.OddRowXOffset;
+                }
 
                 for (int x = 0; x < this.SquaresAcross; x++)
                 {
@@ -61,7 +63,9 @@
                     depthOffset = 0.7f - ((mapx + (mapy * Tile.TileWidth)) / maxdepth);
 
                     if ((mapx >= this.MyMap.MapWidth) || (mapy >= this.MyMap.MapHeight))
+                    {
                         continue;
+                    }
 
                     foreach (int tileID in this.MyMap.Rows[mapy].Columns[mapx].BaseTiles)
                     {
@@ -86,7 +90,7 @@
                             Camera.WorldToScreen(
                                 new Vector2(
                                     (mapx * Tile.TileStepX) + rowOffset,
-                                    mapy * Tile.TileStepY - (heightRow * Tile.HeightTileOffset))),
+                                    (mapy * Tile.TileStepY) - (heightRow * Tile.HeightTileOffset))),
                             Tile.GetSourceRectangle(tileID),
                             Color.White,
                             0.0f,
@@ -114,13 +118,13 @@
 
                     if ((mapx == vladMapPoint.X) && (mapy == vladMapPoint.Y))
                     {
-                        Program.game.play.character.vlad.DrawDepth = depthOffset - (float)(heightRow + 2) * this.heightRowDepthMod;
+                        Program.game.play.character.vlad.DrawDepth = depthOffset - ((float)(heightRow + 2) * this.heightRowDepthMod);
                     }
 
                     // Add by trying to fix draw position of enemy
                     if ((mapx == vlad2MapPoint.X) && (mapy == vlad2MapPoint.Y))
                     {
-                        Program.game.play.enemy.vlad2.DrawDepth = depthOffset - (float)(heightRow + 2) * this.heightRowDepthMod;
+                        Program.game.play.enemy.vlad2.DrawDepth = depthOffset - ((float)(heightRow + 2) * this.heightRowDepthMod);
                     }
 
                     if (this.debugOverlay)
@@ -138,7 +142,9 @@
 
             int hilightrowOffset = 0;
             if ((hilightPoint.Y) % 2 == 1)
+            {
                 hilightrowOffset = Tile.OddRowXOffset;
+            }
 
             spriteBatch.Draw(
                             this.hilight,
