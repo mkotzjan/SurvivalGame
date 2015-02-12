@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SurvivalGame
+﻿namespace SurvivalGame
 {
-    static class Saving
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    public static class Saving
     {
         public static void Save()
         {
-            saveCurrentGame();
+            SaveCurrentGame();
         }
 
-        private static void saveCurrentGame()
+        private static void SaveCurrentGame()
         {
-
         }
     }
 }
