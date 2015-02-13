@@ -39,6 +39,16 @@
                 for (int j = 0; j < myMap.MapWidth; j++)
                 {
                     writer.WriteStartElement("Column" + (j + 1).ToString());
+                    writer.WriteStartElement("TileID");
+                    writer.WriteString(myMap.Rows[i].Columns[j].TileID.ToString());
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("Walkable");
+                    writer.WriteString(myMap.Rows[i].Columns[j].Walkable.ToString());
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("SlopeMap");
+                    writer.WriteString(myMap.Rows[i].Columns[j].SlopeMap.ToString());
+                    writer.WriteString(myMap.Rows[i].Columns[j].SlopeMap.ToString());
+                    writer.WriteEndElement();
                     writer.WriteEndElement();
                 }
                 writer.WriteEndElement();
