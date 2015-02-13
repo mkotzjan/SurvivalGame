@@ -95,6 +95,8 @@ namespace SurvivalGame
                 play.Update(gameTime);
                 break;
                 case GameState.Options:
+                Saving.Save();
+                gameState = GameState.Menu;
                 break;
             }
 

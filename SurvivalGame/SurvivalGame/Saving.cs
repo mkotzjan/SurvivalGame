@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Xml;
     public static class Saving
     {
         public static void Save()
@@ -13,15 +14,35 @@
 
         private static void SaveCurrentGame()
         {
-            MapMaker myMap = new MapMaker();
-            System.Xml.Serialization.XmlSerializer writer =
-                new System.Xml.Serialization.XmlSerializer(typeof(myMap));
+            XmlTextWriter writer = new XmlTextWriter("game.sgs", System.Text.Encoding.UTF8);
+            writer.WriteStartDocument(true);
+            writer.Formatting = Formatting.Indented;
+            writer.Indentation = 2;
+            writer.WriteStartElement("SaveGame");
+            writer.WriteStartElement("Map");
+            SaveMap(writer);
+            writer.WriteEndElement();
+            writer.WriteStartElement("Character");
+            writer.WriteEndElement();
+            writer.WriteEndElement();
+            writer.WriteEndDocument();
+            writer.Close();
+        }
 
-            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//SerializationOverview.xml";
-            System.IO.FileStream file = System.IO.File.Create(path);
+        private static void SaveMap(XmlTextWriter writer)
+        {
+            MapMaker myMap = Program.game.play.mapReader.MyMap;
 
-            writer.Serialize(file, overview);
-            file.Close();
+            for (int i = 0; i < myMap.MapHeight; i++)
+            {
+                writer.WriteStartElement("Row" + (i + 1).ToString());
+                for (int j = 0; j < myMap.MapWidth; j++)
+                {
+                    writer.WriteStartElement("Column" + (j + 1).ToString());
+                    writer.WriteEndElement();
+                }
+                writer.WriteEndElement();
+            }
         }
     }
 }
