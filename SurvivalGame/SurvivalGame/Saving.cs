@@ -23,6 +23,7 @@
             SaveMap(writer);
             writer.WriteEndElement();
             writer.WriteStartElement("Character");
+            SaveCharacter(writer);
             writer.WriteEndElement();
             writer.WriteEndElement();
             writer.WriteEndDocument();
@@ -82,6 +83,11 @@
                 }
                 writer.WriteEndElement();
             }
+        }
+
+        private void SaveCharacter(XmlTextWriter writer)
+        {
+
         }
     }
 }
