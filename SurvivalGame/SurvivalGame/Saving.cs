@@ -25,6 +25,9 @@
             writer.WriteStartElement("Character");
             SaveCharacter(writer);
             writer.WriteEndElement();
+            writer.WriteStartElement("Enemy");
+            SaveEnemy(writer);
+            writer.WriteEndElement();
             writer.WriteEndElement();
             writer.WriteEndDocument();
             writer.Close();
@@ -86,6 +89,11 @@
         }
 
         private static void SaveCharacter(XmlTextWriter writer)
+        {
+
+        }
+
+        private static void SaveEnemy(XmlTextWriter writer)
         {
 
         }
