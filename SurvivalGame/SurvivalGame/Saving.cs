@@ -39,15 +39,44 @@
                 for (int j = 0; j < myMap.MapWidth; j++)
                 {
                     writer.WriteStartElement("Column" + (j + 1).ToString());
-                    writer.WriteStartElement("TileID");
-                    writer.WriteString(myMap.Rows[i].Columns[j].TileID.ToString());
-                    writer.WriteEndElement();
                     writer.WriteStartElement("Walkable");
                     writer.WriteString(myMap.Rows[i].Columns[j].Walkable.ToString());
                     writer.WriteEndElement();
                     writer.WriteStartElement("SlopeMap");
                     writer.WriteString(myMap.Rows[i].Columns[j].SlopeMap.ToString());
-                    writer.WriteString(myMap.Rows[i].Columns[j].SlopeMap.ToString());
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("BaseTiles");
+                    writer.WriteStartElement("Count");
+                    writer.WriteString(myMap.Rows[i].Columns[j].BaseTiles.Count.ToString());
+                    writer.WriteEndElement();
+                    for (int k = 0; k < myMap.Rows[i].Columns[j].BaseTiles.Count; k++)
+                    {
+                        writer.WriteStartElement("BaseTileID");
+                        writer.WriteString(myMap.Rows[i].Columns[j].BaseTiles[k].ToString());
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("HeightTile");
+                    writer.WriteStartElement("Count");
+                    writer.WriteString(myMap.Rows[i].Columns[j].HeightTiles.Count.ToString());
+                    writer.WriteEndElement();
+                    for (int k = 0; k < myMap.Rows[i].Columns[j].HeightTiles.Count; k++)
+                    {
+                        writer.WriteStartElement("HeightTileID");
+                        writer.WriteString(myMap.Rows[i].Columns[j].HeightTiles[k].ToString());
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("TopperTiles");
+                    writer.WriteStartElement("Count");
+                    writer.WriteString(myMap.Rows[i].Columns[j].TopperTiles.Count.ToString());
+                    writer.WriteEndElement();
+                    for (int k = 0; k < myMap.Rows[i].Columns[j].TopperTiles.Count; k++)
+                    {
+                        writer.WriteStartElement("TopperTileID");
+                        writer.WriteString(myMap.Rows[i].Columns[j].TopperTiles[k].ToString());
+                        writer.WriteEndElement();
+                    }
                     writer.WriteEndElement();
                     writer.WriteEndElement();
                 }
