@@ -85,7 +85,7 @@
             }
         }
 
-        private void SaveCharacter(XmlTextWriter writer)
+        private static void SaveCharacter(XmlTextWriter writer)
         {
 
         }
