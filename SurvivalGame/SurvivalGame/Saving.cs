@@ -2,9 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Text;
     using System.Xml;
+    using System.Xml.Serialization;
     public static class Saving
     {
         public static void Save()
@@ -31,6 +33,7 @@
             writer.WriteEndElement();
             writer.WriteEndDocument();
             writer.Close();
+            test();
         }
 
         private static void SaveMap(XmlTextWriter writer)
@@ -98,6 +101,15 @@
         private static void SaveEnemy(XmlTextWriter writer)
         {
 
+        }
+
+        private static void test()
+        {
+            Play play = Program.game.play;
+            XmlSerializer serializer = new XmlSerializer(typeof(Play));
+            FileStream file = new FileStream("test.xml", FileMode.Create);
+            serializer.Serialize(file, play);
+            file.Close();
         }
     }
 }
