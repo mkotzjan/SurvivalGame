@@ -91,6 +91,7 @@
         private static void SaveCharacter(XmlTextWriter writer)
         {
             Character character = Program.game.play.character;
+            writer.WriteElementString("xPosition", character.vlad.Position.X.ToString());
         }
 
         private static void SaveEnemy(XmlTextWriter writer)
