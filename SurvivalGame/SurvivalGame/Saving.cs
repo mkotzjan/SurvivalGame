@@ -90,7 +90,7 @@
 
         private static void SaveCharacter(XmlTextWriter writer)
         {
-
+            Character character = Program.game.play.character;
         }
 
         private static void SaveEnemy(XmlTextWriter writer)
