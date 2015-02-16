@@ -18,11 +18,13 @@ namespace SurvivalGame
         bool toggleOverlay = false;
         KeyboardState ks;
         KeyboardState ksprev;
+        private bool debugBefore;
 
         public Play()
         {
             this.ks = new KeyboardState();
             this.ksprev = new KeyboardState();
+            debugBefore = mapReader.debugOverlay;
         }
 
         public void LoadContent(ContentManager content)
@@ -51,7 +53,6 @@ namespace SurvivalGame
             {
                 ToggleOverlay();
             }
-
             this.ksprev = this.ks;
         }
 
@@ -64,6 +65,10 @@ namespace SurvivalGame
             {
                 mapReader.debugOverlay = false;
                 overlay.Draw(spriteBatch);
+            }
+            else if (debugBefore)
+            {
+                mapReader.debugOverlay = true;
             }
         }
 
