@@ -62,6 +62,7 @@ namespace SurvivalGame
             this.enemy.Draw(spriteBatch);
             if (toggleOverlay)
             {
+                mapReader.debugOverlay = false;
                 overlay.Draw(spriteBatch);
             }
         }
