@@ -12,10 +12,10 @@ using Microsoft.Xna.Framework.Media;
 
 namespace SurvivalGame
 {
-    public bool debug { get; set; };
-
     public static class Options
     {
+        public bool debug {get; set; }
+
         /// <summary>
         /// Load content for options
         /// </summary>
