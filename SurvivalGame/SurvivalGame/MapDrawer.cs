@@ -20,7 +20,7 @@
         private Texture2D hilight;
 
         SpriteFont pericles6;
-        public bool debugOverlay = true;
+        public bool debugOverlay = false;
 
         public void LoadContent(ContentManager content)
         {
