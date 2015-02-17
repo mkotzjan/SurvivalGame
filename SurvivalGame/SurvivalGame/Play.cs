@@ -24,7 +24,7 @@ namespace SurvivalGame
         {
             this.ks = new KeyboardState();
             this.ksprev = new KeyboardState();
-            debugBefore = mapReader.debugOverlay;
+            debugBefore = Options.debug;
         }
 
         public void LoadContent(ContentManager content)
@@ -63,12 +63,12 @@ namespace SurvivalGame
             this.enemy.Draw(spriteBatch);
             if (toggleOverlay)
             {
-                mapReader.debugOverlay = false;
+                Options.debug = false;
                 overlay.Draw(spriteBatch);
             }
             else if (debugBefore)
             {
-                mapReader.debugOverlay = true;
+                Options.debug = true;
             }
         }
 
