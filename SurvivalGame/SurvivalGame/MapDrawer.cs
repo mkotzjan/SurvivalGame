@@ -122,7 +122,7 @@
                         Program.game.play.enemy.vlad2.DrawDepth = depthOffset - ((float)(heightRow + 2) * this.heightRowDepthMod);
                     }
 
-                    if (Options.debug)
+                    if (OptionsComponents.debug)
                     {
                         spriteBatch.DrawString(this.pericles6, (x + firstX).ToString() + ", " + (y + firstY).ToString(),
                             new Vector2((x * Tile.TileStepX) - offsetX + rowOffset + this.BaseOffsetX + 24,
