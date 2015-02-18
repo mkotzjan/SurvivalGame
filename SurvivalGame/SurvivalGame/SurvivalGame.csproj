@@ -84,6 +84,7 @@
     <Compile Include="MapDrawer.cs" />
     <Compile Include="MenuComponent.cs" />
     <Compile Include="Options.cs" />
+    <Compile Include="OptionsComponents.cs" />
     <Compile Include="Overlay.cs" />
     <Compile Include="Play.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

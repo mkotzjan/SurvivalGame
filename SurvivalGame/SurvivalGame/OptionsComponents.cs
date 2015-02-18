@@ -7,6 +7,6 @@ namespace SurvivalGame
 {
     public static class OptionsComponents
     {
-        public bool debug { get; set; }
+        public static bool debug { get; set; }
     }
 }
