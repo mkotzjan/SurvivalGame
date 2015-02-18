@@ -116,7 +116,7 @@ namespace SurvivalGame
         /// </summary>
         /// <param name="key"></param>
         /// <returns>true or false</returns>
-        public bool CheckKeyboard(Keys key)
+        private bool CheckKeyboard(Keys key)
         {
             return (this.keyboard.IsKeyDown(key)  && !this.prevKeyboard.IsKeyDown(key));
         }

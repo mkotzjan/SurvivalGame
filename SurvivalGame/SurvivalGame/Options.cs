@@ -40,5 +40,15 @@ namespace SurvivalGame
         {
 
         }
+
+        /// <summary>
+        /// Check if given key is pressed
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns>true or false</returns>
+        private bool CheckKeyboard(Keys key)
+        {
+            return (this.keyboard.IsKeyDown(key) && !this.prevKeyboard.IsKeyDown(key));
+        }
     }
 }
