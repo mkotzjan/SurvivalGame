@@ -21,7 +21,9 @@ namespace SurvivalGame
         Color color;
         int linePadding = 30;
 
-        List<string> buttonList = new List<string>();
+        int selected = 0;
+
+        List<string> optionsList = new List<string>();
 
         /// <summary>
         /// Load content for options
@@ -30,6 +32,9 @@ namespace SurvivalGame
         public void LoadContent(ContentManager content)
         {
             spriteFont = content.Load<SpriteFont>(@"Fonts\Menu");
+            optionsList.Add("Debugging");
+            optionsList.Add("Testspinner");
+            optionsList.Add("TestSlider");
         }
 
         /// <summary>
@@ -40,9 +45,28 @@ namespace SurvivalGame
         {
             this.keyboard = Keyboard.GetState();
 
-            if (CheckKeyboard(Keys.Escape))
+            if (this.CheckKeyboard(Keys.Escape))
             {
                 Game1.gameState = Game1.GameState.Menu;
+            }
+            else if (this.CheckKeyboard(Keys.Up))
+            {
+                if (this.selected > 0)
+                {
+                    selected--;
+                }
+            }
+            else if (this.CheckKeyboard(Keys.Down))
+            {
+                if ((int)selected < this.optionsList.Count - 1)
+                {
+                    selected++;
+                }
+            }
+
+            if (this.CheckKeyboard(Keys.Enter))
+            {
+                
             }
 
             this.prevKeyboard = this.keyboard;
@@ -54,7 +78,25 @@ namespace SurvivalGame
         /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
+            Program.game.SetBackground(new Color(30, 30, 30));
 
+            int x = 0;
+            for (int i = 0; i < this.optionsList.Count; i++)
+            {
+                this.color = (i == selected) ? new Color(180, 180, 100) : new Color(58, 58, 58);
+                if (i == selected)
+                {
+                    x = 5;
+                }
+                else
+                {
+                    x = 0;
+                }
+                spriteBatch.DrawString(spriteFont, this.optionsList[i], new Vector2((Game1.screen.Width / 2) -
+                     +x, ((Game1.screen.Height / 2) -
+                    (spriteFont.LineSpacing * this.optionsList.Count) / 2) +
+                    (spriteFont.LineSpacing + this.linePadding * i)), this.color);
+            }
         }
 
         /// <summary>
