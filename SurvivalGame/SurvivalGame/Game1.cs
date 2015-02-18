@@ -22,6 +22,7 @@ namespace SurvivalGame
         public static GameState gameState;
         MenuComponent menu;
         public Play play;
+        public Options options;
 
         public static Rectangle screen;
 
@@ -44,6 +45,7 @@ namespace SurvivalGame
             screen = new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
             menu = new MenuComponent();
             play = new Play();
+            options = new Options();
 
             // Initialize the game with gameState Menu
             base.Initialize();
@@ -60,18 +62,10 @@ namespace SurvivalGame
 
             menu.LoadContent(Content);
             play.LoadContent(Content);
+            options.LoadContent(Content);
             base.LoadContent();
 
             // TODO: use this.Content to load your game content here
-        }
-
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// all content.
-        /// </summary>
-        protected override void UnloadContent()
-        {
-            // TODO: Unload any non ContentManager content here
         }
 
         /// <summary>
@@ -95,8 +89,7 @@ namespace SurvivalGame
                 play.Update(gameTime);
                 break;
                 case GameState.Options:
-                Saving.Save();
-                gameState = GameState.Menu;
+                options.Update(gameTime);
                 break;
             }
 
@@ -125,6 +118,7 @@ namespace SurvivalGame
                     play.Draw(spriteBatch);
                     break;
                 case GameState.Options:
+                    options.Draw(spriteBatch);
                     break;
             }
             spriteBatch.End();
