@@ -14,13 +14,22 @@ namespace SurvivalGame
 {
     public class Options
     {
+        KeyboardState keyboard;
+        KeyboardState prevKeyboard;
+
+        SpriteFont spriteFont;
+        Color color;
+        int linePadding = 30;
+
+        List<string> buttonList = new List<string>();
+
         /// <summary>
         /// Load content for options
         /// </summary>
         /// <param name="content"></param>
         public void LoadContent(ContentManager content)
         {
-
+            spriteFont = content.Load<SpriteFont>(@"Fonts\Menu");
         }
 
         /// <summary>
@@ -29,7 +38,14 @@ namespace SurvivalGame
         /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
+            this.keyboard = Keyboard.GetState();
 
+            if (CheckKeyboard(Keys.Escape))
+            {
+                Game1.gameState = Game1.GameState.Menu;
+            }
+
+            this.prevKeyboard = this.keyboard;
         }
 
         /// <summary>
