@@ -92,7 +92,7 @@ namespace SurvivalGame
                 {
                     x = 0;
                 }
-                spriteBatch.DrawString(spriteFont, this.optionsList[i], new Vector2((Game1.screen.Width / 2) -
+                spriteBatch.DrawString(spriteFont, this.optionsList[i], new Vector2((Game1.screen.Width / 4) -
                      +x, ((Game1.screen.Height / 2) -
                     (spriteFont.LineSpacing * this.optionsList.Count) / 2) +
                     (spriteFont.LineSpacing + this.linePadding * i)), this.color);
