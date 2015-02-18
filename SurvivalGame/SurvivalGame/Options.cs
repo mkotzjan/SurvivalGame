@@ -14,15 +14,13 @@ namespace SurvivalGame
 {
     public class Options
     {
-        public bool debug {get; set; }
-
         /// <summary>
         /// Load content for options
         /// </summary>
         /// <param name="content"></param>
         public void LoadContent(ContentManager content)
         {
-            debug = false;
+
         }
 
         /// <summary>

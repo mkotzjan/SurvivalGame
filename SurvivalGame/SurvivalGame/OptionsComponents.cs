@@ -5,7 +5,8 @@ using System.Text;
 
 namespace SurvivalGame
 {
-    class OptionsComponents
+    public static class OptionsComponents
     {
+        public bool debug { get; set; }
     }
 }
