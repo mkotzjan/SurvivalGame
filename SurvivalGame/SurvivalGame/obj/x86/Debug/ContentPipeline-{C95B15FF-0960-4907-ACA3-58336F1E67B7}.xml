@@ -2,6 +2,24 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
+      <Source>Fonts\Menu.spritefont</Source>
+      <Name>Fonts\Menu</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Fonts\Menu.xnb</Output>
+      <Time>2015-01-07T22:04:08.4125147+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\Pericles6.spritefont</Source>
+      <Name>Fonts\Pericles6</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Fonts\Pericles6.xnb</Output>
+      <Time>2014-12-30T12:36:39.5417134+01:00</Time>
+    </Item>
+    <Item>
       <Source>Sound\button-10.wav</Source>
       <Name>Sound\button-10</Name>
       <Importer>WavImporter</Importer>
@@ -20,22 +38,13 @@
       <Time>2014-12-27T15:24:06.5404721+01:00</Time>
     </Item>
     <Item>
-      <Source>Fonts\Menu.spritefont</Source>
-      <Name>Fonts\Menu</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Source>Textures\TileSets\tileset.png</Source>
+      <Name>Textures\TileSets\tileset</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Fonts\Menu.xnb</Output>
-      <Time>2015-01-07T22:04:08.4125147+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Fonts\Pericles6.spritefont</Source>
-      <Name>Fonts\Pericles6</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Fonts\Pericles6.xnb</Output>
-      <Time>2014-12-30T12:36:39.5417134+01:00</Time>
+      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\TileSets\tileset.xnb</Output>
+      <Time>2014-12-30T10:25:29.6665823+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\TileSets\hilight.png</Source>
@@ -72,15 +81,6 @@
       <Options>None</Options>
       <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\TileSets\slopemaps.xnb</Output>
       <Time>2015-01-07T10:58:30.6496898+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\TileSets\tileset.png</Source>
-      <Name>Textures\TileSets\tileset</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Michael\Documents\Projekte\SurvivalGame\SurvivalGame\SurvivalGame\bin\x86\Debug\Content\Textures\TileSets\tileset.xnb</Output>
-      <Time>2014-12-30T10:25:29.6665823+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
